@@ -14,79 +14,13 @@ Zudem wirst Du einigen bisher vielleicht sehr [theoretischen Bereichen aus dem S
 
 Es soll der Start für möglichst viele weitere interessante Projekte werden. Deshalb verwenden wir hier auch ausschließlich Tools, die Du zuhause auch benutzen kannst. Neben den technischen Fähigkeiten wirst Du Vorgehensweisen kennenlernen, die es Dir ermöglichen im Team zielstrebig Teilziele zu erreichen und deine Lösung immer weiter zu verbessern.
 
-Wir stellen dieses Projekt unter Open Source, d. h. jeder auf der Welt wird Deinen Code sehen und erweitern können. Vielleicht findest Du Mitstreiter, zunächst mal in Deinem persönlichen Umfeld, später vielleicht verteilt auf der ganzen Welt. So kannst Du viele Leute aus verschiedenen Kulturen kennenlernen und von ihren technischen und persönlichen Erfahrungen profitieren. Du wirst sehen, daß man in einem kleinen effizienten Team erstaunlich große Dinge schaffen kann. In dieser Woche wirst Du nicht allein sein, denn unser Auszubildender Subhee wird mit Dir gemeinsam das Projekt machen ... ihr werdet also zwei Spielekonsolen bauen. Pierre wird Euch dabei begleiten und bei Problemen behilflich sein. ABER: Ihr seid die Projektleiter, Entwickler, Tester, Präsentatoren, ...
+Wir stellen dieses Projekt unter Open Source, d. h. jeder auf der Welt wird Deinen Code sehen und erweitern können. Vielleicht findest Du Mitstreiter, zunächst mal in Deinem persönlichen Umfeld, später vielleicht verteilt auf der ganzen Welt. So kannst Du viele Leute aus verschiedenen Kulturen kennenlernen und von ihren technischen und persönlichen Erfahrungen profitieren. Du wirst sehen, daß man in einem kleinen effizienten Team erstaunlich große Dinge schaffen kann. In dieser Woche wirst Du nicht allein sein, denn Du bekommst einen Partner (= Betreuer), der mit Dir gemeinsam das Projekt machen durchführen wird ... ihr werdet also zwei Spielekonsolen bauen. Natürlich bekommt Ihr auch noch weitere Unterstützung bei Problemen/Fragen und bei der Einführung der Konzepte. ABER: Ihr seid die Projektleiter, Entwickler, Tester, Präsentatoren, ...
 
 Wir haben uns dafür entschieden, Dich in die Welt von Linux und Python einzuführen. Gepaart mit Cloud-hosted Open-Source-Workflows (mit GitHub) hast Du alle Grundlagen, um als Softwareentwickler in den nächsten Jahren durchzustarten. Wir machen das Ganze auf einem Raspberry Pi, weil Du den auch einfach mit nachhause nehmen und an Deinen eigenen Ideen weiterarbeiten kannst. Außerdem ist es ein Einstieg in die aufkommende Welt der [Internet of Things](https://www.heise.de/tipps-tricks/Internet-of-Things-Was-ist-das-4292504.html), in der noch kleinere Computer wie der RPi genutzt werden. Deine Freunde können jederzeit mitmachen ... ein Invest von 75 Euro und ihr könnt zusammen hacken, vielleicht sogar mal verteilt über die ganze Welt.
 
 Am Ende des Praktikums (Freitag 13:00 Uhr) wirst Du die Spielekonsole launchen, d. h. dem Team präsentieren und ein paar technische Details verraten. Den Höhepunkt bildet die _Lucky Luke Challenge_, ein Wettkampf um den reaktionsschnellsten Kollegen zu ermitteln. Natürlich wird das dann auch ordentlich gefeiert.
 
 > Die Tage sind so aufgebaut, daß an jedem Tag mindestens ein [Minimum Viable Products (aka MVP)](https://de.wikipedia.org/wiki/Minimum_Viable_Product) entsteht, d. h. jedes MVP wäre am Freitag präsentierbar. Je weiter wir kommen desto kompletter ist der Launch des PiCo.
-
-### Detailplanung
-
-Das Praktikum besteht aus 5 x 6 Stunden (eine Stunde Mittagspause - 5 x 7 Stunden Anwesenheit). Wir planen den gesamten Freitag zur Vorbereitung des Launches, so daß 4 x 6 = 24 Stunden zur Entwicklung der Spielekonsole zur Verfügung stehen.
-
-* Tag 1:
-  * Ankommen und Kennenlernen der Kollegen
-    * Pierre
-  * Einführung in das Projekt
-    * Pierre
-  * Mittagessen
-  * Raspberry Pi zusammenbauen und in Betrieb nehmen
-  * GitHub und Git
-    * Pierre
-  * Visual Studio Code als GIT Client
-* Tag 2:
-  * Visual Studio Code als Python Enwticklungsumgebung (editieren, starten, debuggen
-  * Einführung Elektrotechnik
-    * Pierre
-  * Mittagessen
-  * Raspberry Pi um Breadboard erweitern
-  * Erste Schaltungen nachbauen (mit Python Steuerung)
-  * Installation Kivy starten
-* Tag 3:
-  * Lucky Luke Prototyp
-  * Algroithmus für ein Einzelspiel fertigstellen 
-  * Mittagessen
-  * Arcade Buttons verbauen
-  * Gehäuse fertigstellen - NUN sollte das Spiel nutzbar sein (Alpha-Stadium)
-  * Kivy-Einführung
-    * Pierre
-* Tag 4:
-  * Lucky Luke UI-Gerüst und Algorithmus verheiraten
-  * Fehler beseitigen und Spiel optimieren (Beta-Stadium)
-  * Mittagessen
-  * Puffer (Final Release Stadium)
-* Tag 5:
-  * Launch vorbereiten
-  * Mittagessen
-  * Launch und Challenge
-
-Die Tage sind gut durchgetaktet - TODO ... vorab werden wir prüfen, ob die Zeitschätzung einigermaßen paßt oder wo wir noch ein paar Abkürzungen einbauen können.
-
----
-
-## Organisation
-
-Wir brauchen
-
-* zwei Schreibtische
-  * TODO ... können wir die in die Lounge stellen? So kämen die beiden auch immer wieder mit den Kollegen in Kotakt und könnten was zum Projekt erzählen - die [gläserne Manufaktur](https://www.glaesernemanufaktur.de/)
-* zwei Bildschirme mit HDMI Kabel
-* zwei Mäuse und Tastaturen
-* Gäste-WLAN-Zugang
-* einen Präsentationsraum mit großem Fernseher für den Launch am Ende
-  * TODO: Raum buchen
-  * TODO: Grill, Brötchen und Würstchen organisieren
-* zwei RPi-Kits
-  * TODO: bestellen
-* Zugriff auf das Buch [Raspberry Pi für Kids: Programmieren lernen und experimentieren mit Elektronik, Scratch und Python](https://www.amazon.de/gp/product/3958457673?pf_rd_p=671e72bc-8864-4ab6-8ef7-60da5d6ead8c&pf_rd_r=8JN42NF8HYFJ59Y3WWVM)
-
-Können die beiden Entwickler über WhatsApp schnell interagieren, um so Code auszutauschen?
-
-* TODO: fragen, ob Laurin schon WhatsApp benutzt - alternativ Google Hangover ... hat er einen Google Account?
-* TODO: GitHub Account schon erstellt?
-* TODO: fragen, ob er die Spielekonsole behalten darf (Chef und seine Eltern)
 
 ### Hardware
 
@@ -127,7 +61,7 @@ Fragt man also mal rum, so bekommt man vieles sicher von Leuten geschenkt, die f
 
 ## Reminder
 
-Du kannst bei diesem Projekt eigentlich nichts kaputtmachen (abgesehen vielleicht bei den elektronischen Schaltungen, wenn Du Kurzschlüsse verursachst ... maximaler Verlust: 35 Euro). Du wirst Deine Software immer regelmäßig auf einen Server im Internet sichern (schon allein um Dich mit Subhee zu synchronisieren), so daß Du jederzeit ohne großen Aufwand von vorn anfangen kannst. Du kannst auch jederzeit beim Raspberry Pi einfach den Stromstecker ziehen und das System startet ohne Datenverlust beim nächsten mal wieder ... Linux ist hier sehr zuverlässig.
+Du kannst bei diesem Projekt eigentlich nichts kaputtmachen (abgesehen vielleicht bei den elektronischen Schaltungen, wenn Du Kurzschlüsse verursachst ... maximaler Verlust: 35 Euro). Du wirst Deine Software immer regelmäßig auf einen Server im Internet sichern (schon allein um Dich mit Deinem Betreuer zu synchronisieren), so daß Du jederzeit ohne großen Aufwand von vorn anfangen kannst. Du kannst auch jederzeit beim Raspberry Pi einfach den Stromstecker ziehen und das System startet ohne Datenverlust beim nächsten mal wieder ... Linux ist hier sehr zuverlässig.
 
 ... hab also keine Angst und spiel rum.
 
@@ -264,7 +198,7 @@ Finde zwei Möglichkeiten, [Kodi](https://kodi.tv/) zu starten.
 Fragen:
 
 * Was fällt Dir beim Start auf?
-  * ANTWORT-PIERRE: es sieht gar nicht mehr nach einem Betriebssystem aus ... wenn der RPi gleich diese Anwendung starten würde, dann hätte man gar nicht mehr den Eindruck, daß es sich um einen Computer handelt, sondern eher ein professionelles Consumer-Gerät aus dem High-End-Hifi Bereich.
+  * TODO-ANTWORT: es sieht gar nicht mehr nach einem Betriebssystem aus ... wenn der RPi gleich diese Anwendung starten würde, dann hätte man gar nicht mehr den Eindruck, daß es sich um einen Computer handelt, sondern eher ein professionelles Consumer-Gerät aus dem High-End-Hifi Bereich.
 * Du findest sicher ein paar Einsatzbereiche für Kodi zuhause ... Projekte, bei denen man nicht sofort an einen Computer oder einen 35-Euro Raspberry Pi denkt.
 * Könnten wir Kodi auch für unsere Spielekonsole verwenden? Welche Vorteile hätte das?
 
@@ -293,7 +227,7 @@ Starte anschließend einmal kurz Gimp ... wir wollen das Thema Bildbearbeitung j
 
 Wir haben dieses Projekt bereits bei GitHub angelegt: https://github.com/mobi3006/pico
 
-> Derzeit befindet sich dort nur diese Beschreibung. In den nächsten Tagen wirst Du zusammen mit unserem Azubi Subhee weitere Teile beisteuern.
+> Derzeit befindet sich dort nur diese Beschreibung. In den nächsten Tagen werdet Ihr weitere Teile beisteuern.
 
 Mach diese Seite am besten gleich mal zur Startseite in Deinem Web-Browser.
 
@@ -369,7 +303,7 @@ git push
 
 Schau jetzt mal im Webbrowser auf das Repository - hat sich etwas verändert?
 
-Sobald Subhee das auch getan hat, könnt Ihr beide diesen Befehl ausführen:
+Sobald Dein Betreuer das auch getan hat, könnt Ihr beide diesen Befehl ausführen:
 
 ```
 git pull
@@ -404,7 +338,7 @@ Am Anfang ist das sicher ein wenig viel Input, um alles von der Konsole zu mache
 
 > ACHTUNG: die aktuelle Version (1.32.x) der von `headmelted` bereitgestellten _Visual Studio Code_-Ports führt beim Starten zu einem schwarzen Bildschirm. Deshalb verwenden wir die Version `1.29.0-1539702286` und mit `apt-mark hold code-oss` verhindern wir, daß bei einem Betriebssystem-Update per `sudo apt-get update && sudo apt-get dist-upgrade` (weitere Details zu einem [Raspbian-Upgrade findest Du hier](https://www.raspberrypi.org/documentation/raspbian/updating.md)) eine neuere Version installiert wird und der schwarze Bildschrim wieder zum Problem wird. Ich habe das auch nur durch Suche über Google rausgefunden und bin auf [diese Beschreibung](https://github.com/headmelted/codebuilds/issues/73) gestoßen. Dort war dieser Workaround angegeben. Irgendwann ist das Problem vielleicht behoben und ich kann die Upgrade-Sperre per `apt-mark unhold code-oss` aufheben.
 
-Starte Visual Studio Code per `code-oss` von der Console oder über das Menü (Menu RPi - Entwicklung - Code - OSS (handmelted)). Subhee wird Dir zeigen wie Du
+Starte Visual Studio Code per `code-oss` von der Console oder über das Menü (Menu RPi - Entwicklung - Code - OSS (handmelted)). Dein Betreuer wird Dir zeigen wie Du
 
 * dein lokales `pico`-Git-Repository in Deinen Visual Studio Code Workspace bekommst
   * Hinweis: nicht vergessen "File - Save Workspace As ..." damit der Workspace beim nächsten Start wieder genauso aussieht
@@ -569,7 +503,7 @@ printDasGibtsDochGarNicht("This line will be printed.")
 
 Was stellst Du fest?
 
-Korrigiere das Programm wieder, stelle es unter Versionskontrolle ( ... aber diesemal mit VSC: `git add`, `git commit`, `git push`), so daß Subhee es auch in SEIN lokales GIT-Repository downloaden kann (`git pull` ... aber diesmal mit VSC).
+Korrigiere das Programm wieder, stelle es unter Versionskontrolle ( ... aber diesemal mit VSC: `git add`, `git commit`, `git push`), so daß Dein Betreuer es auch in SEIN lokales GIT-Repository downloaden kann (`git pull` ... aber diesmal mit VSC).
 
 ---
 
@@ -607,9 +541,9 @@ Hast Du oder deine Tests einen Fehler gefunden, dann mußt Du den Fehler im Prog
 
 ## Aufgabe: Debugging mit Visual Studio Code
 
-Mach Dich vertraut mit der [Python-Extension](https://code.visualstudio.com/docs/python/python-tutorial) ... Subhee kann Dich Dir das Wichtigste kurz zeigen und dann debuggst Du mal selbst Dein Programm.
+Mach Dich vertraut mit der [Python-Extension](https://code.visualstudio.com/docs/python/python-tutorial) ... Dein Betreuer kann Dir das Wichtigste kurz zeigen und dann debuggst Du mal selbst Dein Programm.
 
-Mach Dich vielleicht mit den beiden [wichtigsten Kontrollstrukturen](http://www.cogsci.rpi.edu/~destem/gamedev/python.pdf) `if` und `while` vertraut, indem Du Dir mit Subhee eine sinnvolle Anwendung überlegst. Nutze dabei auch gleich das Debugging, um den Ablauf nachzuvollziehen.
+Mach Dich vielleicht mit den beiden [wichtigsten Kontrollstrukturen](http://www.cogsci.rpi.edu/~destem/gamedev/python.pdf) `if` und `while` vertraut, indem Ihr Euch eine sinnvolle Anwendung überlegt. Nutze dabei auch gleich das Debugging, um den Ablauf nachzuvollziehen.
 
 > während des Debuggings kannst Du auch Variablenwerte verändern ... probier es mal aus.
 
@@ -763,8 +697,8 @@ Hierzu bringst Du die LED für 3 Sekunden zum leuchten und wenn der Mini-Taster 
 
 Was solltest Du an Deinem Programm noch verändern, damit es noch intuitiver bedienbar ist - was stört ein wenig?
 
-* ANTWORT-PIERRE: sobald der Taster gedrückt wurde sollte die LED auch ausgehen.
-* ANTWORT-PIERRE: ein akustisches Signal bei einem Punkt wäre eine motivierende Rückmeldung
+* ANTWORT-TODO: sobald der Taster gedrückt wurde sollte die LED auch ausgehen.
+* ANTWORT-TODO: ein akustisches Signal bei einem Punkt wäre eine motivierende Rückmeldung
 
 ---
 
@@ -879,11 +813,11 @@ Für den [Launch](https://www.chimpify.de/marketing/fehler-product-launch/) soll
   * Wie baust Du den Launch auf?
 * Wie leitest Du auf die Challenge über?
 * Mußt Du noch was für die Challenge vorbereiten?
-* Subhee wird Dich unterstützten - wer macht was?
+* Dein Betreuer wird Dich unterstützten - wer macht was?
 
 Nach dem Mittagessen startet die Show - wir haben einen Raum mit großem Fernseher (für Deine Präsentation und Lucky Luke) gebucht. Wir haben schon ein wenig Werbung gemacht ... die Launch-Party während der Challenge organisieren wir.
 
-### Powerpoint war gestern ... reveal.js 
+### Powerpoint war gestern ... reveal.js
 
 Vielleicht macht Ihr in der Schule Powerpoint-Vorträge ... und das ist ja auch gar nicht schlecht. Aber als cooler Hacker muß man aber immer wieder neue Wege ausprobieren und sich von den Mainstream-Ansätzen von Nicht-Techies abheben.
 
