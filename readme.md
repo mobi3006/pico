@@ -243,7 +243,7 @@ Würde ich jetzt die Überschrift von
 Exkurs Git
 ```
 
-nach 
+nach
 
 ```
 Exkurs Git Versionsverwaltung
@@ -288,13 +288,13 @@ git clone https://github.com/mobi3006/pico.git
 
 Anschließend mußt Du Username und Passwort eingeben - dann wird das Repository auf Deinen Raspberry Pi runtergeladen ... ins Verzeichnis `pico`. Es steht nun zu Deiner Verfügung - Du kannst Änderungen machen. Öffne doch einfach mal diese Beschreibung (`~/pico/readme.md`) im Editor (RPi Menü - Zubehör - Text Editor).
 
-> Vielleicht wunderst Du dich über diese komische Formatierung in der Textdatei. Hierbei handelt es sich um die sog. [Markdown-Syntax](https://de.wikipedia.org/wiki/Markdown), die gerne in Open-Source-Projekten verwendet wird. Vergleiche diese Darstellung im Editor am besten mal mit der Darstellung der Datei im [Web-Browser](https://github.com/mobi3006/pico/readme.md). Was fällt Dir auf?
+> Vielleicht wunderst Du dich über diese komische Formatierung in der Textdatei. Hierbei handelt es sich um die sog. [Markdown-Syntax](https://de.wikipedia.org/wiki/Markdown), die gerne in Open-Source-Projekten verwendet wird. Vergleiche diese Darstellung im Editor am besten mal mit der Darstellung der Datei im [Web-Browser](https://github.com/mobi3006/pico/blob/master/readme.md). Was fällt Dir auf?
 
 Jetzt leg doch am besten gleich mal eine Datei mit Deinem Namen an und schreibe rein `hallo`.
 
 Führe nun diese GIT-CLI-Kommandos aus:
 
-```
+```bash
 cd ~/pico
 git add .
 git commit -m "meine erste Datei`
@@ -305,7 +305,7 @@ Schau jetzt mal im Webbrowser auf das Repository - hat sich etwas verändert?
 
 Sobald Dein Betreuer das auch getan hat, könnt Ihr beide diesen Befehl ausführen:
 
-```
+```bash
 git pull
 ```
 
@@ -437,7 +437,7 @@ Selbst wenn Du nun schon Grundkenntnisse in Python hast, wird dir vieles sicher 
 
 Starte das Programm einfach mal von der Konsole (LXTerminal öffnen oder ein vorhandenes wiederverwenden):
 
-```
+```bash
 python ~/python_games/wormy.py
 ```
 
@@ -531,7 +531,7 @@ Im Minecraft-Spiel solltest Du nun Deine Chatnachricht sehen.
 
 ## Exkurs: Fehlersuche
 
-Niemand schreibt einen komplexeren Programmcode sofort fehlerfrei hin und ist fertig. Stattdessen testet man sein Programm entweder manuell oder aber auch über automatisierte Testst, die jederzeit hunderte von Situationen abprüfen können. Letzteres ist die beste Variante, um die Qualität Deiner Software schnell, zuverlässig und ohne landweilige Wiederholungen durchzuführen. Kein Softwareentwickler ist an langweiligen Arbeiten interessiert.
+Niemand schreibt einen komplexeren Programmcode sofort fehlerfrei hin und ist fertig. Stattdessen testet man sein Programm entweder manuell oder aber auch über automatisierte Testst, die jederzeit hunderte von Situationen abprüfen können. Letzteres ist die beste Variante, um die Qualität Deiner Software schnell, zuverlässig und ohne langweilige Wiederholungen durchzuführen. Kein Softwareentwickler ist an langweiligen Arbeiten interessiert.
 
 Hast Du oder deine Tests einen Fehler gefunden, dann mußt Du den Fehler im Programmcode erstmal finden. Hier hilft Dir der Debugger, der Deinen Programmcode Zeile für Zeile ausführt und Du kannst dabei Werte von Variablen anschauen und verändern.
 
@@ -660,7 +660,7 @@ In der vorherigen Aufgabe hast Du die Schaltung mechanisch aufgebaut ... der RPi
 
 Hierzu bietet der RPi sog. GPIO-Ausgänge, über die Du das Spannungspotential steuern kannst. Mit
 
-```
+```python
 from RPi import GPIO
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(37, GPIO.OUT)
