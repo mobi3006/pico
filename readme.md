@@ -143,6 +143,10 @@ Das wichtigste ist die Vergabe eines Passwort für den user `pi`.
 
 Zudem wird noch das WLAN konfiguriert (das haben wir allerdings schon im Noobs Installer getan) und das System aktualisiert (auch das dauert eine Weile). Es erfolgt ein Neustart des Systems. Das Starten des Computers dauert ca. 30 Sekunden.
 
+> Änderungen an der Konfiguration kann man auch im nachhinein noch über "RPi Menü - Einstellungen - Raspberry-Pi-Konfiguration" oder `sudo raspi-config` über das LXTerminal vornehmen. Über letzteres kann man beispielsweise die [Bildschirm-Auflösung konfigurieren](https://www.elektronik-kompendium.de/sites/raspberry-pi/2101201.htm).
+
+Bei der Nutzung solltest Du darauf achten, daß im rechten oberen Bereich **KEIN BLITZ** zu sehen ist. Wenn doch, dann ist das ein Indiz, daß die Stronversorgung nicht stabil ist. Das könnte zu Abstürzen oder Performanceenbußen führen. Du solltest ein ordentliches Netzteil verwenden und kein Handy-Ladegerät!!!
+
 ### Raspbian
 
 Die grafische Oberfläche erinnert an Microsoft Windows, es handelt sich aber um ein Linux System, das mit sehr geringen Ressourcen auskommt (bei 35 Euro für die Hardware kann man keine Super-Power erwarten) und dennoch flüssig zu bedienen ist.
@@ -734,7 +738,10 @@ Python bietet auch die Möglichkeit, grafische Oberflächen zu programmieren. Hi
 
 * [Tkinter](https://www.youtube.com/watch?v=D8-snVfekto)
 * [Kivy](https://kivy.org/#home)
+  * [Offline Dokumentation im PDF](https://buildmedia.readthedocs.org/media/pdf/kivy/latest/kivy.pdf)
+  * [Widgets](https://kivy.org/doc/stable/api-kivy.uix.html)
   * [vollständige Dokumentation](https://kivy.org/doc/stable/)
+  * [Programming Guide](https://kivy.org/doc/stable/guide-index.html)
   * [Wie man aus einer Kivy-Anwendung eine Android-App baut](https://www.youtube.com/watch?v=t8N_8WkALdE&list=PLM6XTURnWnoS91OefXkAdJ2AWv_W0aHoW&index=2)
   * [Wie man aus einer Kivy-Anwendung eine iOS-App baut](https://www.youtube.com/watch?v=UAi3PG-qN2k)
 
@@ -780,7 +787,6 @@ if __name__ == '__main__':
 
 > ACHTUNG: ohne die ersten beiden Zeilen kommt es zu einem Speicherzugriffsfehler mit dem aktuellen Raspbian wie [hier dokumentiert](https://stackoverflow.com/questions/53122908/kivy-opengl-segmentation-fault-on-raspberry). Ich bin der Sache nicht weiter auf den Grund gegangen, weil der [Workaround per `os.environ['KIVY_GL_BACKEND'] = 'gl'](https://kivy.org/doc/stable/guide/environment.html) funktioniert hat.
 
-
 ### Entwurf der Lucky Luke UI
 
 ... TODO ...
@@ -790,6 +796,30 @@ if __name__ == '__main__':
 > Wir haben bereits eine grafische Oberfläche vorbereitet, weil das den Rahmen dieses Praktikums gesprengt hätte - die Zeit hätte einfach nicht gereicht. Zuhause kannst Du dich ein wenig in [Kivy vertiefen](https://kivy.org/doc/stable/guide/basic.html) und die Oberfläche noch weiter anpassen. Vielleicht habt Ihr bis hierher aber auch noch etwas an der Spielidee geändert und Ihr müßt an das [Graphical-User-Interface](https://de.wikipedia.org/wiki/Grafische_Benutzeroberfl%C3%A4che) noch mal Hand anlegen.
 
 ... TODO ...
+
+---
+
+## Exkurs Kivy
+
+Kivy vereinfacht die Entwicklung platformunabhängiger UIs. Der Name leitet sich aus der Beschreibung der UI in Form von `foo.kv` Dateien ab. Auf hohem Abstraktionsniveau lassen sich ansprechende UIs beschreibung und Interaktion in Python implementieren.
+
+... TODO ... Konzeptdiagram
+
+[Widgets](https://kivy.org/doc/stable/api-kivy.uix.html) sind das Salz in der Suppe, das sind die Elemente, die Benutzereingaben verarbeiten und entweder sichtbar oder unsichtbar sind. Ein Widget ist das sog. Root-Widet, das viele Child-Widets haben kann. Das Root-Widget erhält nach einer Benutzereingabe (z. B. Mausclick) ein Event. Das Event wird vom Root-Widget in einer der Callback-Methoden `on_touch_down`, `on_touch_move` oder `on_touch_up` verarbeitet. Das Event wird dann entweder hier abschließend bearbeitet oder an die Child-Widgets weitergeleitet. Ein Widget implementiert die `collide_point()` Methode, um festzustellen, [ob es an einem Input-Event interessiert ist](https://kivy.org/doc/stable/guide/architecture.html) ... es ist interessiert wenn der Bildschirm z. B. innerhalb eines Bereichs des Widgets gedrückt wurde.
+
+Die Programmsteuerung übernimmt die sog. [Main-Loop](https://kivy.org/doc/stable/guide/events.html), von der aus die Callbacks der Anwendung aufgerufen werden. Ein Callback sollte niemals selbst in eine unednlich-Schleife gehen oder die Ausführung unterbrechen, denn dann wird der Programmfluß unterbrochen und die Anwendung gerät ins stocken. Deshalb sieht ein [typischer Code so aus](https://kivy.org/doc/stable/guide/events.html)
+
+```python
+def on_touch_down(self, touch):
+    if self.collide_point(*touch.pos):
+        self.pressed = touch.pos
+        return True
+    return super(CustomBtn, self).on_touch_down(touch)
+```
+
+Das Widget kennt seine Abmessungen und reagiert nur, wenn es "gemeint" war ... in dem Fall nimmt es das Event auch aus der Verarbeitung (`return True`). Ansonsten wird das Event einfach weitergeleitet, um anderen Widgets die Chance zur Verarbeitung zu geben (`return super(CustomBtn, self).on_touch_down(touch)`).
+
+> ACHTUNG: diese Logik ist einfach, hat aber auch den Nachteil, daß NICHTS mehr funktioniert (z. B. schwarzer Bildschirm), wenn der Code schlecht geschrieben ist.
 
 ---
 
@@ -907,6 +937,6 @@ Im VNC-Viewer würde ich die Bildqualität noch auf "Hoch" stellen, da das Bild 
 
 ![VNC Client Bildqualität](docs/images/vncViewer-bildqualitaet.png)
 
-> Insgasamt sorgt der Netzwerkzugriff über WLAN für eine kleine Verzögerung - dafür brauchst Du aber keine Tastatur/Maus/Bildschirm mehr ... aus meiner Sicht ist das ein guter Kompromiss. Solltest Du ein Netzwerkkabel zur Hand haben, mit dem Du die WLAN-Verbindung ablösen kannst, so wirst Du wahrscheinlich auch diese Verzögerung in den Griff bekommen.
+> Insgsamt sorgt der Netzwerkzugriff über WLAN für eine kleine Verzögerung - dafür brauchst Du aber keine Tastatur/Maus/Bildschirm mehr ... aus meiner Sicht ist das ein guter Kompromiss. Solltest Du ein Netzwerkkabel zur Hand haben, mit dem Du die WLAN-Verbindung ablösen kannst, so wirst Du wahrscheinlich auch diese Verzögerung in den Griff bekommen.
 
-Wenn Du nun Zugriff auf Deinen RPi hast, kannst Du eigentlich Maus, Tastatur und Bildschirm vom RPi abbauen. Leg es nicht zu weit weg, wenn man was schiefläuft (nach einem System-Upgrade) und die VNC-Verbidnung nicht klappt, dann kannst Du es sicher wieder gut gebrauchen.
+Wenn Du nun Zugriff auf Deinen RPi hast, könntest Du eigentlich Maus, Tastatur und Bildschirm vom RPi abbauen. **ABER:** das Kivy UI wird nicht per VNC auf dem Client ausgegeben ... [RealVNC does not support OpenGL ES 2](https://stackoverflow.com/questions/52111556/no-kivy-gui-while-using-vnc-to-raspberry).
