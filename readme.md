@@ -143,9 +143,23 @@ Das wichtigste ist die Vergabe eines Passwort für den user `pi`.
 
 Zudem wird noch das WLAN konfiguriert (das haben wir allerdings schon im Noobs Installer getan) und das System aktualisiert (auch das dauert eine Weile). Es erfolgt ein Neustart des Systems. Das Starten des Computers dauert ca. 30 Sekunden.
 
-> Änderungen an der Konfiguration kann man auch im nachhinein noch über "RPi Menü - Einstellungen - Raspberry-Pi-Konfiguration" oder `sudo raspi-config` über das LXTerminal vornehmen. Über letzteres kann man beispielsweise die [Bildschirm-Auflösung konfigurieren](https://www.elektronik-kompendium.de/sites/raspberry-pi/2101201.htm).
+> Änderungen an der Konfiguration kann man auch im nachhinein noch über "RPi Menü - Einstellungen - Raspberry-Pi-Konfiguration" oder `sudo raspi-config` über das LXTerminal vornehmen. Über letzteres kann man beispielsweise die [Bildschirm-Auflösung konfigurieren](https://www.elektronik-kompendium.de/sites/raspberry-pi/2101201.htm), wenn die nicht passen sollte.
 
 Bei der Nutzung solltest Du darauf achten, daß im rechten oberen Bereich **KEIN BLITZ** zu sehen ist. Wenn doch, dann ist das ein Indiz, daß die Stronversorgung nicht stabil ist. Das könnte zu Abstürzen oder Performanceenbußen führen. Du solltest ein ordentliches Netzteil verwenden und kein Handy-Ladegerät!!!
+
+### System-Upgrade
+
+Nach dem ersten Start bringen wir Dein System erst einmal auf den aktuellen Stand.
+
+> Der Noobs Installer, der für die Erstinstallation zuständig war, ist vermutlich schon ein wenig veraltet und enthält noch nicht die letzten Neuerungen. Es ist immer wichtig regelmäßig Betriebssystem- und Software-Updates zu machen, um das System sicher zu gestalten - Hacker finden immer mal wieder Lücken, die unter Linux aber zeitnah geschlossen werden.
+
+Öffne das "RPi Menü - Zubehör - LXTerminal" und führe diesen Befehl aus:
+
+```bash
+sudo apt-get update && sudo apt-get dist-upgrade
+```
+
+Das dauert eine Weile ... danach solltes Du Deinen RPi neu starten.
 
 ### Raspbian
 
@@ -216,7 +230,7 @@ Fragen:
 
 ```bash
 sudo apt-get update
-sudu apt-get install gimp
+sudo apt-get install gimp
 ```
 
 Starte anschließend einmal kurz Gimp ... wir wollen das Thema Bildbearbeitung jetzt aber nicht vertiefen. Diese Übung sollte Dir nur eine zweite Variante aufzeigen wie man Software an einem Linux-System nachinstalliert.
@@ -290,7 +304,7 @@ cd ~
 git clone https://github.com/mobi3006/pico.git
 ```
 
-Anschließend mußt Du Username und Passwort eingeben - dann wird das Repository auf Deinen Raspberry Pi runtergeladen ... ins Verzeichnis `pico`. Es steht nun zu Deiner Verfügung - Du kannst Änderungen machen. Öffne doch einfach mal diese Beschreibung (`~/pico/readme.md`) im Editor (RPi Menü - Zubehör - Text Editor).
+Anschließend wird das Repository auf Deinen Raspberry Pi runtergeladen ... ins Verzeichnis `~/pico`. Es steht nun zu Deiner Verfügung - Du kannst Änderungen machen. Öffne doch einfach mal diese Beschreibung (`~/pico/readme.md`) im Editor (RPi Menü - Zubehör - Text Editor).
 
 > Vielleicht wunderst Du dich über diese komische Formatierung in der Textdatei. Hierbei handelt es sich um die sog. [Markdown-Syntax](https://de.wikipedia.org/wiki/Markdown), die gerne in Open-Source-Projekten verwendet wird. Vergleiche diese Darstellung im Editor am besten mal mit der Darstellung der Datei im [Web-Browser](https://github.com/mobi3006/pico/blob/master/readme.md). Was fällt Dir auf?
 
@@ -330,7 +344,7 @@ Führe folgende Befehle aus:
 ```bash
 sudo bash
 wget -qO - https://packagecloud.io/headmelted/codebuilds/gpgkey | sudo apt-key add -;
-echo "deb https://packagecloud.io/headmelted/codebuilds/raspbian/ jessie main" >> /etc/apt/sources.list
+echo "deb https://packagecloud.io/headmelted/codebuilds/debian/ stretch main" >> /etc/apt/sources.list.d/headmelted_vscode.list
 apt-get update
 apt-get install code-oss=1.29.0-1539702286
 apt-mark hold code-oss
@@ -940,3 +954,34 @@ Im VNC-Viewer würde ich die Bildqualität noch auf "Hoch" stellen, da das Bild 
 > Insgsamt sorgt der Netzwerkzugriff über WLAN für eine kleine Verzögerung - dafür brauchst Du aber keine Tastatur/Maus/Bildschirm mehr ... aus meiner Sicht ist das ein guter Kompromiss. Solltest Du ein Netzwerkkabel zur Hand haben, mit dem Du die WLAN-Verbindung ablösen kannst, so wirst Du wahrscheinlich auch diese Verzögerung in den Griff bekommen.
 
 Wenn Du nun Zugriff auf Deinen RPi hast, könntest Du eigentlich Maus, Tastatur und Bildschirm vom RPi abbauen. **ABER:** das Kivy UI wird nicht per VNC auf dem Client ausgegeben ... [RealVNC does not support OpenGL ES 2](https://stackoverflow.com/questions/52111556/no-kivy-gui-while-using-vnc-to-raspberry).
+
+---
+
+Exkurs: PHP
+
+Neben Python ist PHP eine gerne genutzte Programmiersprache. Hierbei besteht die grafische Oberfläche aus einer HTML-Seite, die in Deinem Browser angezeigt wird. Der HTML-Code wird von einem Web-Server (z. B. [Apache Http](https://httpd.apache.org/)) bereitgestellt und von einem PHP-Plugin (erzeugt aus PHP-Code den HTML-Code) generiert.
+
+Eine Entwicklungsumgebung kannst Du in Dinem Raspberry Pi per
+
+```bash
+sudo apt-get update
+sudo apt-get install php
+```
+
+> Dieser kleine Befehl sorgt für die Installation mehrerer Software-Pakete. U. a. wird auch der Apache-Http Web-Browser installiert und gestartet (und so eingerichtet, daß er bei jedem Neustart verfügbar ist).
+
+Anschließend kannst Du in Deinem Web-Browser die Seite http://localhost öffnen und bekommst die HTML-Seite angezeigt. Aus dem kryptischen Code wird im Browser eine "schöne" Seite erzeugt.
+
+> Den Code dieser HTML-Seite findest Du unter `/var/www/html/index.html`.
+
+Führe mal diesen Befehl aus:
+
+```bash
+mkdir ~/php
+echo "<?php echo Hello; ?>" > ~/php/hello.php
+sudo ln -s /home/pi/php /var/www/html/php
+```
+
+Jetzt hast Du Deine erste PHP-Seite in `~/php/hello.php` und kannst sie per http://localhost/php/hello.php im Browser anzeigen lassen.
+
+Viel Spaß bei Deinen weiteren PHP-Aktivitäten.
