@@ -344,7 +344,7 @@ Führe folgende Befehle aus:
 ```bash
 sudo bash
 wget -qO - https://packagecloud.io/headmelted/codebuilds/gpgkey | sudo apt-key add -;
-echo "deb https://packagecloud.io/headmelted/codebuilds/debian/ stretch main" >> /etc/apt/sources.list.d/headmelted_vscode.list
+echo "deb https://packagecloud.io/headmelted/codebuilds/debian/ stretch main" > /etc/apt/sources.list.d/headmelted_vscode.list
 apt-get update
 apt-get install code-oss=1.29.0-1539702286
 apt-mark hold code-oss
