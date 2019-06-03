@@ -10,7 +10,7 @@ Das Besondere ist, daß wir für das Projekt nichts weiter als den RPi verwenden
 
 Wir wollen Dich in diesem Praktikum nicht abschrecken oder Dich mit unverständlichen Prozessen/Technologien langweilen. Stattdessen wollen wir Dich für die Welt der IT (insbesondere der Softwareentwicklung) begeistern. Sicherlich wird es im Berufsleben auch mal weniger spannende Phasen geben, doch die Freude bei der Realisierung von Problemlösungen wird überwiegen.
 
-Zudem wirst Du einigen bisher vielleicht sehr [theoretischen Bereichen aus dem Schulunterricht](http://www.bildungsplaene-bw.de/,Lde/LS/BP2016BW/ALLG/GYM/PH/IK/7-8/05) begegnen und damit ein wenig arbeiten: Eletrotechnik ... wir machen aber nichts Wildes.
+Zudem wirst Du einigen bisher vielleicht sehr [theoretischen Bereichen aus dem Schulunterricht](http://www.bildungsplaene-bw.de/,Lde/LS/BP2016BW/ALLG/GYM/PH/IK/7-8/05) begegnen und damit ein wenig arbeiten: Elektrotechnik ... wir machen aber nichts Wildes.
 
 Es soll der Start für möglichst viele weitere interessante Projekte werden. Deshalb verwenden wir hier auch ausschließlich Tools, die Du zuhause auch benutzen kannst. Neben den technischen Fähigkeiten wirst Du Vorgehensweisen kennenlernen, die es Dir ermöglichen im Team zielstrebig Teilziele zu erreichen und deine Lösung immer weiter zu verbessern.
 
@@ -471,7 +471,7 @@ und starte das Programm erneut. Fällt Dir was auf?
 
 Installiere die VSC-Extension `Python - ms-python.python`. Hiermit bekommst Du
 
->  IntelliSense, linting, debugging, code navigation, code formatting
+> IntelliSense, linting, debugging, code navigation, code formatting
 
 Also alles was Du zum professionellen coden mit Python benötigst.
 
