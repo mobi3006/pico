@@ -34,7 +34,7 @@ Für dieses Projekt brauchen wir folgende Komponenten:
   * das bekommst Du sicherlich geschenkt ... viele Leute haben zuhause alte Hardware, die sie nicht mehr brauchen
 * Netzteil mit 2m Kabel
   * 10 Euro
-  * in ein richtig dimensioniertes Netzteil sollte man investieren, um seine Zeit nicht irgendwelchen seltsamen Phänomenen zu vergeuden. Ein Ladegerät eines Handys sollte man nicht verwenden (auch wenn es von den Anschlüssen paßt), da
+  * in ein **richtig dimensioniertes Netzteil muß man investieren**, um seine Zeit nicht irgendwelchen seltsamen Phänomenen zu vergeuden. Ich kann hier aus eigener Erfahrungen sprechen, da ich mit einem schlechten Netzteil ganz schlechte Performance hatte (kaum bedienbar) und sogar Überhitzungen kam, die zum Einfrieren des Geräts und Probleme beim Neustart führten. Ein Ladegerät eines Handys sollte man nicht verwenden (auch wenn es von den Anschlüssen paßt), da
 
     > "Um einen Fehlkauf zu vermeiden, sollte man Netzteile nur dort kaufen, wo sie explizit als Zubehör für den Raspberry Pi erhältlich sind." ([Raspberry Pi: Das richtige Netzteil](https://www.elektronik-kompendium.de/sites/raspberry-pi/2002021.htm))
 
@@ -143,7 +143,7 @@ Das wichtigste ist die Vergabe eines Passwort für den user `pi`.
 
 Zudem wird noch das WLAN konfiguriert (das haben wir allerdings schon im Noobs Installer getan) und das System aktualisiert (auch das dauert eine Weile). Es erfolgt ein Neustart des Systems. Das Starten des Computers dauert ca. 30 Sekunden.
 
-> Änderungen an der Konfiguration kann man auch im nachhinein noch über "RPi Menü - Einstellungen - Raspberry-Pi-Konfiguration" oder `sudo raspi-config` über das LXTerminal vornehmen. Über letzteres kann man beispielsweise die [Bildschirm-Auflösung konfigurieren](https://www.elektronik-kompendium.de/sites/raspberry-pi/2101201.htm), wenn die nicht passen sollte.
+> Änderungen an der Konfiguration kann man auch im nachhinein noch über "RPi Menü - Einstellungen - Raspberry-Pi-Konfiguration" oder `sudo raspi-config` über das LXTerminal vornehmen. Über letzteres kann man beispielsweise die [Bildschirm-Auflösung konfigurieren](https://www.elektronik-kompendium.de/sites/raspberry-pi/2101201.htm) oder der Start des System auf die Textkonsole oder die grafische Oberfläche erfolgen soll (mit Autp-Login des Users `pi` oder nicht).
 
 Bei der Nutzung solltest Du darauf achten, daß im rechten oberen Bereich **KEIN BLITZ** zu sehen ist. Wenn doch, dann ist das ein Indiz, daß die Stronversorgung nicht stabil ist. Das könnte zu Abstürzen oder Performanceenbußen führen. Du solltest ein ordentliches Netzteil verwenden und kein Handy-Ladegerät!!!
 
@@ -985,3 +985,68 @@ sudo ln -s /home/pi/php /var/www/html/php
 Jetzt hast Du Deine erste PHP-Seite in `~/php/hello.php` und kannst sie per http://localhost/php/hello.php im Browser anzeigen lassen.
 
 Viel Spaß bei Deinen weiteren PHP-Aktivitäten.
+
+---
+
+## Appendix
+
+### Erste Hilfe beim Raspberry
+
+**Frage 1:**
+
+Hilfe, mein Raspberry startet nicht mehr richtig. Was kann ich tun?
+
+**Antwort 1:**
+
+Beim Starten sollte man auf jeden Fall mal auf rote Zeichen auf der Textoberfläche achten, die durchrauscht. Vielleicht werden einige Dienste nicht gestartet und/oder einige Dateien sind kaputt.
+
+Beim Booten kann man die Shift-Taste drücken, um in den Noobs Recovery-Modus zu kommen. Sollte das nicht helfen kann man auch Strg-Alt-F1 oder (-F2 bis -F6) lange zusammen drücken, um auf die Textkonsole zu gelangen. Dann kann man zumindest ein bisschen weiter analysieren.
+
+> Das sind die Standard-Linux-Terminals, die es neben der grafischen Oberfläche auf jedem Linux-System gibt.
+
+Sollte das nicht klappen, dann kann man - sofern man Raspbian über den Noobs-Installer installiert hat - beim Start mit der Shift-Taste (wird auch angezeigt) zum Noobs Menü gelangen. Dort kann man über den *Konfigurationseditor* die `config.txt` und `cmdline.txt` bearbeiten. Nützliche Einstellungen sind hier:
+
+* `config.txt`:
+  * [vollständig Beschreibung](http://rpf.io/config.txt)
+  * `hdmi_safe=1` ... wenn der Bildschirm schwarz bleibt
+* `cmdline.txt`:
+  * durch anhängen von `init=/bin/sh` kommt man in einen reinen Konsolen-Modus. Über `dmesg` kann man sich die letzten Boot-Nachrichten anschauen.
+
+Später muß man dann noch einmal in das Noobs-Menü booten, um die Änderungen rückgängig zu machen.
+
+**Frage 2:**
+
+Mein Raspberry startet gar nicht mehr ... bleibt einfach hängen. Was kann ich tun?
+
+**Antwort 2:**
+
+Jetzt wirds echt knifflig, aber Du kannst viel über das Betriebssystem lernen. Du mußt im Noobs-Menü (beim Start die _Shift_-Taste drücken) folgenden Befehl an die `cmdline.txt` hängen (siehe Frage 1): `init=/bin/sh`
+
+Danach neu booten. In dem jetzigen Zustand sind Deine Festplatten (= Partitionen ... die auf der SD-Karte) noch nicht gemounted. Das machst Du per
+
+* `mount /boot`
+* `mount /`
+  * alternativ `mount -o remount,rw /`
+
+Danach am besten mal einen Filesystem-Check per `fsck /boot` und `fsck /` starten. Im besten Fall bekommst Du etwas, das mit diesem `fsck` automatisch repariert werden kann. Ein `dirty bit` kann beim unvollständigen `unmount` (Rechner abgestürzt) schon mal passieren.
+
+Ein häufiges Problem bei solchen mysteriösen Problemen sind auch vollgelaufene Dateisysteme. Prüfe mal mit `df -h`, ob ein Dateisystem bei nahezu 100% Nutzung angelangt ist.
+
+**Frage 3:**
+
+Hilfe, ich muß meinen Raspberry neu aufsetzen - kann ich die Daten retten?
+
+**Antwort 3:**
+
+Als Nutzer eines Linux-Laptops hast Du damit kein Problem, da die Raspbian Dateisysteme typische Linux-Filesysteme sind und somit leicht gelesen werden können. Als Windows-Nutzer empfehle ich Dir die Installation von [DiskInternals Linux Reader](https://www.diskinternals.com/linux-reader/), mit dem man die Daten zumindest kopieren kann.
+
+**Frage 4:**
+
+Hilfe, ich habe mein Passwort vergessen - kann ich es zurücksetzen?
+
+**Antwort 4:**
+
+In das Noobs-Menü booten (per Shift beim Start) und dann die `cmdline.txt` bearbeiten
+[wie hier beschrieben](https://forum-raspberrypi.de/forum/thread/5173-wenn-das-root-password-vergessen-wurde/#m4).
+
+> Nicht wundern, dieses Noobs-Menü wird mit ESC abgeschlossen ... die Änderungen werden dennoch gespeichert.
