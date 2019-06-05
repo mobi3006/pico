@@ -1,0 +1,62 @@
+###################################################################################################
+# Kivy approach is to separate presentation (= UI ... inside foo.kv) and logic (inside foo.py)
+###################################################################################################
+
+#:kivy 1.11.0
+
+# layout of the root-widget
+<RootWidget>:
+
+    # Property: binding model <=> UI-control
+    newPlayerName: newPlayerNameInput
+
+    BoxLayout:
+        pos: root.pos
+        size: root.size
+        GridLayout:
+            cols: 1
+            BoxLayout:
+                height: 100
+                Label:
+                    font_size: 20  
+                    center_x: root.width / 4
+                    top: root.top - 50
+                    text: "Name"
+                TextInput:
+                    id: newPlayerNameInput
+                LukeButton:
+                    id: add_player_button
+                    text: "add"
+                    on_release: root.addPlayer(newPlayerNameInput.text)
+            Label:
+                # HINT: input as output
+                background_normal: ''
+                background_color: (1.0, 0.0, 0.0)
+                text: "Lucky " + newPlayerNameInput.text            
+            Label:
+                background_normal: ''
+                background_color: (1.0, 0.0, 0.0)
+                text: "Mitspieler"            
+        BoxLayout:
+            LukeButton:
+                text: "Button Box 2"
+            Label:
+                background_normal: ''
+                background_color: (1.0, 0.0, 0.0)
+                text: "Silke"            
+        BoxLayout:
+            LukeButton:
+                text: "Button Box 3"
+            Label:
+                background_normal: ''
+                background_color: (1.0, 0.0, 0.0)
+                text: "Robin"            
+
+# layout of the LukeButton - reuse it in several use-cases  
+<LukeButton@Button>:
+    center: self.parent.center
+    font_size: 14
+    height: 28
+    background_normal: ''
+    background_color: 1, .3, .4, .85
+    #background_color: (1.0, 0.0, 0.0, 1.0)
