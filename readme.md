@@ -4,6 +4,8 @@ In diesem Projekt werden wir die Spielekonsole _PiCo_ bauen. Das Herzstück der 
 
 Das Besondere ist, daß wir für das Projekt nichts weiter als den RPi verwenden (Du benutzt keinen anderen Computer) - er beliefert uns mit Informationen aus dem Internet, stellt die Python-Entwicklungsumgebung bereit und ist die Spielekonsole. Insgesamt kostet die Spielekonsole nur 75 Euro - was selbst für Schüler ein erwschwinglicher Preis ist.
 
+> Es müssen nicht unbedingt alle Teile dieses Dokuments behandelt werden. Teile wie GIT, PHP, ... können anfangs durchaus weggelassen werden und später bei Bedarf behandelt bzw. nachgelesen werden.
+
 ---
 
 ## Motivation und Ablauf
@@ -22,7 +24,13 @@ Am Ende des Praktikums (Freitag 13:00 Uhr) wirst Du die Spielekonsole launchen, 
 
 > Die Tage sind so aufgebaut, daß an jedem Tag mindestens ein [Minimum Viable Products (aka MVP)](https://de.wikipedia.org/wiki/Minimum_Viable_Product) entsteht, d. h. jedes MVP wäre am Freitag präsentierbar. Je weiter wir kommen desto kompletter ist der Launch des PiCo.
 
-### Hardware
+### Hardware - 75 Euro
+
+> Es ist verlockend ein Handy-Ladegerät zu verwenden, weil die Anschlüsse passen ... Mache es besser nicht, denn damit handelst Du dir nur Probleme ein (Performanceeinbußen, Instabilität, Abstürze, Datenverlust, heiße CPU, ...) - das kenne ich leider aus eigener Erfahrung. Denn:
+>
+>> "Bei viele Steckernetzteilen, die typischerweise zum Laden von Smartphones und Tablets verwendet werden, handelt es sich nicht um Netzteile, sondern in der Regel um Ladegeräte für akkubetriebene Geräte. Diese Ladegeräte verlassen sich darauf, dass das damit versorgte Gerät keine stabile Spannung erwartet. Akkubetriebene Geräte werden typischerweise mit Strom geladen, wobei die Stabilität der Spannung aus dem Ladegerät völlig egal ist." ([Raspberry Pi: Grundlagen der Energieversorgung / Stromversorgung](https://www.elektronik-kompendium.de/sites/raspberry-pi/1912111.htm))
+>
+> Das Netzteil muß auch Strom für die angeschlossenen USB-Devices liefern und insofern sollte das Netzteil entsprechend für den Einsatzzweck dimensioniert sein ... [hier werden mindestens 2500 mA empfohlen](https://www.datenreise.de/raspberry-pi-stromversorgung-netzteil-empfehlung/).
 
 Für dieses Projekt brauchen wir folgende Komponenten:
 
@@ -32,16 +40,9 @@ Für dieses Projekt brauchen wir folgende Komponenten:
 * Mini SD Karte - 16 GB
   * 7 Euro
   * das bekommst Du sicherlich geschenkt ... viele Leute haben zuhause alte Hardware, die sie nicht mehr brauchen
-* Netzteil mit 2m Kabel
-  * 10 Euro
-  * in ein **richtig dimensioniertes Netzteil muß man investieren**, um seine Zeit nicht irgendwelchen seltsamen Phänomenen zu vergeuden. Ich kann hier aus eigener Erfahrungen sprechen, da ich mit einem schlechten Netzteil ganz schlechte Performance hatte (kaum bedienbar) und sogar Überhitzungen kam, die zum Einfrieren des Geräts und Probleme beim Neustart führten. Ein Ladegerät eines Handys sollte man nicht verwenden (auch wenn es von den Anschlüssen paßt), da
-
-    > "Um einen Fehlkauf zu vermeiden, sollte man Netzteile nur dort kaufen, wo sie explizit als Zubehör für den Raspberry Pi erhältlich sind." ([Raspberry Pi: Das richtige Netzteil](https://www.elektronik-kompendium.de/sites/raspberry-pi/2002021.htm))
-
-    > "Bei viele Steckernetzteilen, die typischerweise zum Laden von Smartphones und Tablets verwendet werden, handelt es sich nicht um Netzteile, sondern in der Regel um Ladegeräte für akkubetriebene Geräte. Diese Ladegeräte verlassen sich darauf, dass das damit versorgte Gerät keine stabile Spannung erwartet. Akkubetriebene Geräte werden typischerweise mit Strom geladen, wobei die Stabilität der Spannung aus dem Ladegerät völlig egal ist." ([Raspberry Pi: Grundlagen der Energieversorgung / Stromversorgung](https://www.elektronik-kompendium.de/sites/raspberry-pi/1912111.htm))
-
-* [Raspberry Gehäuse inkl. Kühlkörper](https://www.amazon.de/Raspberry-geh%C3%A4use-iBetter%C2%AE-K%C3%BChlk%C3%B6rper-Transparent/dp/B01CPCMWWO/ref=sr_1_3?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2J7NJ8SLFGQL6&keywords=raspberry+pi+3+b%2B+geh%C3%A4use+transparent&qid=1558447348&s=gateway&sprefix=raspberry+pi+3+b%2B+geh%C3%A4use+%2Caps%2C146&sr=8-3)
-  * 7 Euro
+* [Raspberry Gehäuse inkl. Kühlkörper, Lüfter und Netzteil mit Schalter (sehr praktisch)](https://www.amazon.de/dp/B07BK3W3XR/ref=sspa_dk_detail_4?psc=1&pd_rd_i=B07BK3W3XR&pd_rd_w=6tt1G&pf_rd_p=00903874-3af0-47e0-8622-ee58087f71cf&pd_rd_wg=YByf2&pf_rd_r=H4TMH6KT3Y1D6CMACXKH&pd_rd_r=200a60f5-875d-11e9-acf8-b37e4eea4373)
+  * 16 Euro
+  * ich hatte mal ein Problem in meiner Software (hohe CPU-Last) und da sprang die Temperatur-Warnung im Raspbian an. Vielleicht passiert das im Hochsommer noch häufiger oder wenn der RPi in kleine schlecht durchlüftete Gehäuse verbaut wird
 * [Basic Starter Kit inkl. GPIO Extension Board](https://www.amazon.de/Freenove-Raspberry-Beginner-Processing-Tutorials/dp/B06WD5FTVD/ref=sxbs_sxwds-stvp?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1J8XSDI6ASS4C&keywords=raspberry+starter+kit&pd_rd_i=B06WD5FTVD&pd_rd_r=9f5d7937-9b6f-4648-8377-cb066c29ac93&pd_rd_w=ECmgx&pd_rd_wg=Bjfdc&pf_rd_p=6d84c7ba-ae72-4e53-b9a4-5df18ccb370e&pf_rd_r=ER7FAQRN3734ETBRCXKS&qid=1558448017&s=gateway&sprefix=raspberry+starter%2Caps%2C140)
   * 13 Euro
 * [Tastatur und Maus - USB - zur Not gebraucht](https://www.amazon.de/Desktop-Set-492015-Optische-Scrollrad-deutschem/dp/B00BLJDZ5Q/ref=sr_1_2?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=maus+tastatur&qid=1558448148&s=gateway&sr=8-2)
@@ -56,6 +57,8 @@ Für dieses Projekt brauchen wir folgende Komponenten:
 Man kann die Komponenten teilweise auch in Starter Kits gemeinsam erwerben - häufig sind sie aber gebundelt mit Teilen, die man (noch) nicht benötigt. Selbst wenn man alle Teile braucht, sind die Angebote meist nicht besser als beim Einzelkauf. Schaut einfach mal.
 
 Fragt man also mal rum, so bekommt man vieles sicher von Leuten geschenkt, die froh sind ihre alte Hardware in gute Händezu geben. Vielleicht kann man sogar auch einen etwas älteren Raspberry PI auf diese Weise bekommen. Grundsätzlich könnte man auch den 5 Euro Raspberry PI Zero kaufen, doch muß man hier erstmal die GPIOs anlöten. Für den Schnellstart würde ich das nicht empfehlen.
+
+> Für den RPi gibt es unzählige Zubehörteile (von Luftfeuchtigkeitsmesser bis Touchscreen)... je nach Projekt wird man hier sicher fündig. Ein Vorteil des RPi gegenüber anderen Bastelcomputern.
 
 ---
 
