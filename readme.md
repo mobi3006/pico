@@ -403,6 +403,26 @@ Starte Visual Studio Code per `code-oss` von der Console oder über das Menü (M
 
 ---
 
+## Aufgabe: Backup Deines Systems
+
+SD-Karten sind nicht besonders zuverlässig, die meisten sind so günstig, daß es da schon mal zu Ausfällen kommen kann. Keine Angst, Du mußt nicht befürchten, daß jede Woche die Karte kaputt ist. Aber wenn Du viele Stunden in die Konfiguration Deines Systems investiert hast, dann wäre ein Totalverlust sehr ärgerlich.
+
+> Grundsätzlich würde ich wichtigen Code immer bei GitHub oder BitBucket in der Cloud ablegen. Dort bekommt man kostenlos auch private Repositories gehostet.
+
+Unter "RPi Menü - Zubehör - SD Card Copier" findest Du ein komfortables Programm, um
+
+* Deine SD-Karte (von der RPi startet) auf eine andere Mini-SD-Karte zu clonen. Hierzu benötigst Du allerdings einen [USB-SD-Adapter wie diesen](https://www.amazon.de/UGREEN-Kartenleser-MacBook-Samsung-Aluminum/dp/B07D1J88CF/ref=sr_1_4?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2EEG5VBOO3VOB&keywords=usb-sd+adapter&qid=1559978982&s=gateway&sprefix=usb-sd%2Caps%2C140&sr=8-4)
+  * auch praktisch, um Deinen aktuellen Stand mit Freunden zu teilen
+* Deine SD-Karte auf USB zu sichern
+
+Bei diesem SD-Kopiervorgang werden alle Partitionen (es sind mehrere) Deines Systems kopiert, um auch wirklich einen Clon zu produzieren.
+
+Unter Windows wirst Du den Inhalte dieses Backups nicht out-of-the-box lesen können, da Linux Dateisysteme verwendet, mit denen Microsoft Windows nicht umgehen kann. Abhilfe schafft hier [Linux Reader von Sysinternals](https://www.diskinternals.com/linux-reader/)
+
+Erstelle nun solch ein Backup und prüfe, ob Du dein System mit dieser geclonten Karte auch starten kannst - **DENN:** ein Backup ist nur dann hilfreich, wenn es auch funktioniert :-)
+
+---
+
 ## Aufgabe: Python Programme starten
 
 Unter "Menü RPi - Spiele - Python Games" findest Du ein paar einfache Spiele. Starte `wormy` und spiel es ein paar mal.
@@ -423,7 +443,15 @@ Tatsächlich ist Python aber nicht nur eine gute Sprache für den Start, sondern
 
 > "Python gewinnt mit großem Abstand den Titel der beliebtesten Programmiersprache über alle Altersgruppen hinweg." ([entwickler.de](https://entwickler.de/online/development/programmiersprachen-go-python-579827892.html))
 
-[Hier](https://www.learnpython.org/) findest Du eine kurze interaktive (!!!) Einführung in Python - wir benötigen für das Praktikum nur die Basics von "Hello World" bis "Loops". Folgende Python Sprachelemente sollten ausreichen:
+[Hier](https://www.learnpython.org/) findest Du eine kurze interaktive (!!!) Einführung in Python - wir benötigen für das Praktikum nur die Basics von "Hello World" bis "Loops". Eine vollständige Dokumentation von Python findest Du [hier](https://docs.python.org), aber keine Angst ... wir brauchen nur ganz wenige Sprachkonstrukte.
+
+> Aufgabe: Hast Du schon rausgefunden [warum die Sprache Python heißt](https://de.wikipedia.org/wiki/Python_(Programmiersprache)) ... Nerds sind echte Scherzkekse.
+
+### Getting Started
+
+Für dieses Praktikum benötigst Du nur sehr wenige Python Sprachkonstrukte. Diese [erste Seite diese Übersicht](http://www.cogsci.rpi.edu/~destem/gamedev/python.pdf) sollten für diese Woche genügen - im Prinzip kannst Du aus diesen Zeilen alles notwendige abschauen:
+
+ Folgende Python Sprachelemente sollten ausreichen:
 
 ```python
 from time import time
@@ -450,13 +478,7 @@ dauer = currentTime - startTime
 print("Dauer der Berechnung: " + (str(dauer)) + " Sekunden")
 ```
 
-Eine vollständige Dokumentation von Python findest Du [hier](https://docs.python.org), aber keine Angst ... wir brauchen nur ganz wenige Sprachkonstrukte.
-
-Hast Du schon rausgefunden [warum die Sprache Python heißt](https://de.wikipedia.org/wiki/Python_(Programmiersprache)) ... Nerds sind echte Scherzkekse.
-
-### Getting Started
-
-Für dieses Praktikum benötigst Du nur sehr wenige Python Sprachkonstrukte. Diese [erste Seite diese Übersicht](http://www.cogsci.rpi.edu/~destem/gamedev/python.pdf) sollten für diese Woche genügen. Vielleicht kannst Du gegen Ende auch noch die Listen und die Dateioperationen gebrauchen - laß es jetzt aber zunächst mal weg.
+Vielleicht kannst Du gegen Ende auch noch die Listen und die Dateioperationen gebrauchen - laß es jetzt aber zunächst mal weg.
 
 In diesem interaktiven Tutorial könnt Ihr mit den Basics schön rumspielen:
 
@@ -1112,22 +1134,6 @@ Viel Spaß bei Deinen weiteren PHP-Aktivitäten.
 ### Raspberry Pi Links
 
 * [pierreinside](https://github.com/mobi3006/pierreinside/blob/master/raspberrypi.md)
-
-### Backup
-
-SD-Karten sind nicht besonders zuverlässig, die meisten sind so günstig, daß es da schon mal zu Ausfällen kommen kann. Keine Angst, Du mußt nicht befürchten, daß jede Woche die Karte kaputt ist. Aber wenn Du viele Stunden in die Konfiguration Deines Systems investiert hast, dann wäre ein Totalverlust sehr ärgerlich.
-
-> Grundsätzlich würde ich wichtigen Code immer bei GitHub oder BitBucket in der Cloud ablegen. Dort bekommt man kostenlos auch private Repositories gehostet.
-
-Unter "RPi Menü - Zubehör - SD Card Copier" findest Du ein komfortables Programm, um
-
-* Deine SD-Karte (von der RPi startet) auf eine andere Mini-SD-Karte zu clonen. Hierzu benötigst Du allerdings einen [USB-SD-Adapter wie diesen](https://www.amazon.de/UGREEN-Kartenleser-MacBook-Samsung-Aluminum/dp/B07D1J88CF/ref=sr_1_4?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2EEG5VBOO3VOB&keywords=usb-sd+adapter&qid=1559978982&s=gateway&sprefix=usb-sd%2Caps%2C140&sr=8-4)
-  * auch praktisch, um Deinen aktuellen Stand mit Freunden zu teilen
-* Deine SD-Karte auf USB zu sichern
-
-Bei diesem SD-Kopiervorgang werden alle Partitionen (es sind mehrere) Deines Systems kopiert, um auch wirklich einen Clon zu produzieren.
-
-Unter Windows wirst Du den Inhalte dieses Backups nicht out-of-the-box lesen können, da Linux Dateisysteme verwendet, mit denen Microsoft Windows nicht umgehen kann. Abhilfe schafft hier [Linux Reader von Sysinternals](https://www.diskinternals.com/linux-reader/)
 
 ### Erste Hilfe beim Raspberry
 
