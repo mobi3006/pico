@@ -70,6 +70,25 @@ Du kannst bei diesem Projekt eigentlich nichts kaputtmachen (abgesehen vielleich
 
 ---
 
+## Exkurs: Raspberry Pi
+
+Der Raspberry Pi (RPi) ist ein vollwertigen sehr günstiger Computer, für den es eine Vielzahl von Zubehör gibt, weil er für unendlich viele Bastelprojekte verwendet wird.
+
+Seit Juni 2019 ist die neueste [Version 4](https://www.raspberrypi.org/products/raspberry-pi-4-model-b/) verfügbar, die über folgende besondere Merkmale verfügt:
+
+* 1, 2 oder 4 GB Speicher
+  * vorher gab es ihn nur mit 1 GB Speicher - was bei Nutzung als Desktop-Rechner zu wenig war
+  * 1 GB Variante kostet 35 Euro, 4 GB Variante 55 Euro
+* USB 3.0
+* Bluetooth 5.0
+* Gigabit LAN mit tatsächlich hoher Performance
+  * Vorgänger-Version hatte auch Gigabit LAN aber tatsächlich war nur ein Drittel verfügbar
+* 2 HDMI Ausgänge mit 4k Support
+
+Für unsere Zwecke genügt auch eine Vorgängerversion (nur Visual Studio Code braucht vergleichsweise viel Speicher und könnte besser laufen).
+
+---
+
 ## Computer bauen
 
 ### 1. Schritt - Hardware-Zusammenbau
@@ -404,7 +423,32 @@ Tatsächlich ist Python aber nicht nur eine gute Sprache für den Start, sondern
 
 > "Python gewinnt mit großem Abstand den Titel der beliebtesten Programmiersprache über alle Altersgruppen hinweg." ([entwickler.de](https://entwickler.de/online/development/programmiersprachen-go-python-579827892.html))
 
-[Hier](https://www.learnpython.org/) findest Du eine kurze interaktive (!!!) Einführung in Python - wir benötigen für das Praktikum nur die Basics. Von "Hello World" bis "Loops".
+[Hier](https://www.learnpython.org/) findest Du eine kurze interaktive (!!!) Einführung in Python - wir benötigen für das Praktikum nur die Basics von "Hello World" bis "Loops". Folgende Python Sprachelemente sollten ausreichen:
+
+```python
+from time import time
+from random import choice
+
+farbe = choice(["rot", "gelb", "grün", "blau"])
+print("Du bist Spieler mit der Farbe: " + farbe)
+
+print("Bis zu welcher Zahl soll aufaddiert werden?")
+zahl = int(input())
+
+i = 0
+summe = 0
+startTime = time()
+
+while i <= zahl:
+   summe = summe + i
+   print("summe(" + str(i) + ") = " + str(summe))
+   i = i + 1
+
+currentTime = time()
+dauer = currentTime - startTime
+
+print("Dauer der Berechnung: " + (str(dauer)) + " Sekunden")
+```
 
 Eine vollständige Dokumentation von Python findest Du [hier](https://docs.python.org), aber keine Angst ... wir brauchen nur ganz wenige Sprachkonstrukte.
 
@@ -664,7 +708,6 @@ Dann baust Deine erste Schaltung folgendermaßen auf:
 
 Prüft den Widerstand, den Ihr verwenden wollt am besten mit dem Multimeter (man kann die [Größe des Widerstands auch an der Farbcodierung ablesen](https://www.arduino-tutorial.de/widerstand/), doch )... auf 2000 Ohm stellen. Dann könnt Ihr Widerstände bis 2k Ohm messen ... wir wollen einen um die 300 Ohm verwenden - das sollte also passen.
 
-
 * https://www.elektronik-kompendium.de/sites/raspberry-pi/2102181.htm
 
 > **Am besten kontrolliert Ihr die Schaltung des anderen (sog. Review), denn bei einem Fehler könnte die LED zerstört werden oder im schlimmsten Fall der RPi.**
@@ -679,7 +722,11 @@ Was fällt Dir auf?
 
 In der vorherigen Aufgabe hast Du die Schaltung mechanisch aufgebaut ... der RPi hat den Strom geliefert und der ist dauerhaft durch die LED geflossen. Schon mal nicht schlecht, aber wir wollen den Strom nun über den RPi steuern können, d. h. Du willst mit einem Befehl die LED an- und wieder ausschalten. Der erste Schritt auf dem Weg zum Lucky Luke.
 
-Hierzu bietet der RPi sog. GPIO-Ausgänge, über die Du das Spannungspotential steuern kannst. Mit
+Hierzu bietet der RPi sog. GPIO-Ausgänge, über die Du das Spannungspotential steuern kannst. Bei folgendem Schaltungsaufbau
+
+![LED an/aus](docs/images/schaltung-led-an_aus.jpeg)
+
+sorgt dieses Programm
 
 ```python
 from RPi import GPIO
@@ -688,7 +735,9 @@ GPIO.setup(37, GPIO.OUT)
 GPIO.output(37, True)
 ```
 
-machst Du Pin 37 zum Ausgabeport und setzt die Spannung auf 3,3V.
+für eine leuchtende LED.
+
+> In diesem Programm wird GPIO Port 37 zum Ausgabeport und ein Spannungspotential von 3,3V wird erzeugt => Strom fließt => LED an.
 
 Aufgaben (Du mußt nicht alle machen ... nur ein paar Ideen):
 
@@ -723,23 +772,85 @@ Was solltest Du an Deinem Programm noch verändern, damit es noch intuitiver bed
 
 ---
 
-## Aufgabe: Arcade Buttons verbauen
+## Exkurs: Arcade Buttons
 
-Es gibt Arcade Buttons, die man einerseits zum Leuchten bringen kann (Ausgabe) und andererseite Benutzereingaben bereitstellen (= Tastendruck). Verbaue den ersten Arcade Button und überlege, wie Du die 
+In den 1970er Jahren kamen Computerspiele auf, die in Spielhallen (sog. Penny Arcades) angeboten wurden. Diese Spielautomaten hatten ein sehr markantes aussehen. Die [Arcade-Spiele](https://de.wikipedia.org/wiki/Arcade-Spiel) waren sehr beliebt.
+
+Mit den kleinen Tastern aus dem RPi Starter Kit kann man zwar den Prototyp bauen, aber für ein Reaktionsspiel sind die Taster zu klein und der aktuelle Aufbau zu wackelig. Deshalb müssen nun richtige Taster her, auf die man auch mal draufhauen kann. Die werden wir dann später in ein Gehäuse verbauen und den Raspberry PI und die Schaltung darin verstauen, so daß dem Kasten von außen nicht mehr anzusehen ist, daß darin ein Computer und weitere Schaltungen steckt. So ist das bei der PS4 ja auch.
+
+> In einer PS4 findet man allerdings i. a. keine Kabel mehr, da di Leiterbahnen (bei uns kabel) auf einer [Platine](https://de.wikipedia.org/wiki/Hauptplatine) integriert sind. In [diesem Video](https://www.youtube.com/watch?v=_GVk_hEMjzs) wird die Herstellung einer solchen Platine erklärt).
+
+Wir brauchen unbedingt beleuchtete Buttons. Darin sind eigentlich nur solch kleine LEDs verbaut wie wir sie in unserem Prototypen verwendet haben. Bei manchen Buttons sind die LEDs zugänglich und können ausgetauscht werden (z. B. gegen andere Farben) - bei anderen ist das nicht möglich, d. h. LED kaput => Button wegwerfen.
+
+Ich war auf der Suche nach LEDs, die sich über 3,3 V betreiben lassen ... das liefern nämlich die GPIOs des RPi. Leider habe ich keine gefunden, aber zumindest [diese](https://www.amazon.de/gp/product/B075DFNK24/ref=ppx_yo_dt_b_asin_title_o09_s00?ie=UTF8&psc=1). 5V kann der RPi auch liefern (das ist die Spannung, mit der der RPi über [USB](https://de.wikipedia.org/wiki/Universal_Serial_Bus) versorgt wird) und die werden auch auf das Breadboard rausgeführt.
 
 ---
 
-## Aufgabe: Gehäuse
+## Aufgabe: Arcade Button dauerhaft zum Leuchten bringen
+
+Statt der kleinen LEDs möchten wir nun die Arcade Buttons dauerhaft zum Leuchten bringen.
+
+Die von uns verwendeten Buttons sollen mit 5V betrieben werden. Baue eine Schaltung, so daß ein Button duaerhaft leuchtet.
+
+**Lösung:**
+
+![Arcade Button dauerleuchten](docs/images/rpi-arcadeButton-dauerleuchten.jpeg)
+
+**Zusatzfrage:** warum geht leuchtet der Button nicht, wenn man die Pole vertauscht?
+
+**Antwort:** LED ist gerichtet - [Anode/Kathode](https://www.elektronik-kompendium.de/sites/bau/0201111.htm)
+
+**Zusatzfrage:** Was passiert, wenn Du die Buttons über 3V ansteuerst?
+
+**Antwort:** die LEDs sind nicht so hell (warum?), aber es geht
+
+---
+
+## Aufgabe: Arcade Button LED programmatisch steuern
+
+Für Lucky Luke müssen wir die LEDs allerdings ab- und wieder anschalten können (der Benutzer soll wissen welchen Button er drücken soll) - das erfolgt über die GPIOs (Du hast das Programm dafür schon geschrieben). Wie schaffen wir das?
+
+Teil A: Verwende 3,3V zum Betrieb
+
+![Arcade Button programmatisch steuern](docs/images/rpi-arcadeButton-programmatischLeuchten.jpeg)
+
+Teil B (optional): Wir wollen die Buttons in voller Stärke zum Strahlen bringen und benötigen dazu 5V. Wie baust Du die Schaltung auf?
+
+**Lösung:**
+
+GPIO mit Output 0V beschalten, wenn man den Strom fließen lassen will ... GPIO liefert nicht die 5V, sondern das niedrige Spannungspotential.
+
+---
+
+## Aufgabe: Arcade Button LED programmatisch steuern
+
+Nun werden wir den letzten Schritt unseres [Proof-of-Concept](https://de.wikipedia.org/wiki/Proof_of_Concept) gehen und den Arcade Button vollständig in Betrieb nehmen.
+
+Wir müssen nun den Tastendruck programmatisch auslesen und in unseren Algorithmus/Programm verbauen. Den Code habe wir ja schon geschrieben - bleibt nur noch, die Schaltung entsprechend zu erweitern.
+
+**Lösung:**
+
+---
+
+## Aufgabe: vier verschiedenfarbige Buttons in ein Gehäuse verbauen
 
 Jetzt sind wir schon ziemlich weit und die Arcade-Buttons müssen auch ordentlich verbaut werden, sonst kann man nicht mit Schwung auf die Buttons drücken.
 
 Ein professionelles [Arcade-Gehäuse wie dieses](https://www.amazon.de/Bewinner-schwarzes-Acrylpanel-Arcade-Spiel-schwarzem-default/dp/B07NKGLZ2P/ref=sr_1_1?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=arcade+geh%C3%A4use&qid=1558622370&s=gateway&sr=8-1) wäre cool und ist einigermaßen erschwinglich.
 
-Alternativ könnte man eins aus [Holz](https://www.youtube.com/watch?v=K3QXLQ1UXqs) bauen (sehr aufwendig), einen [3D-Drucker wie hier](https://www.youtube.com/watch?v=RdPYug3wucw) oder [Lego](https://www.youtube.com/watch?v=s6_HVW7leEc) verwenden.
+Kaufen ist aber irgendwie doch zu langweilig - wir bauen es einfach selber.
+
+Welche Optionen haben wir (vielleicht fallen Dir ja noch mehr ein):
+
+* [Holz](https://www.youtube.com/watch?v=K3QXLQ1UXqs) wäre bauen (sehr aufwendig)
+* [Lego](https://www.youtube.com/watch?v=s6_HVW7leEc)
+* [3D-Drucker wie hier](https://www.youtube.com/watch?v=RdPYug3wucw)
 
 Wir machen es uns jetzt mal ganz einfach und verwenden [Kartons](https://www.youtube.com/watch?v=ht96K62Ml0o) ... wir haben genug Kartons und es läßt sich einfach verarbeiten. Anschließend kann man es sogar noch lackieren oder mit Aufklebern pimpen.
 
 Hauptsache die Bottons sitzen fest.
+
+**Frage:** Wo wird der RPi und die Schaltung sitzen? Berücksichtige das bei Deinem Gehäuse?
 
 ### Anschlüsse
 
@@ -814,6 +925,11 @@ if __name__ == '__main__':
 
 ... TODO ...
 
+### Exkurs Kivy
+
+... TODO ...
+
+... in DrawExpress habe ich schon ein Schaubild vorbereitet.
 ---
 
 ## Exkurs Kivy
@@ -993,6 +1109,26 @@ Viel Spaß bei Deinen weiteren PHP-Aktivitäten.
 
 ## Appendix
 
+### Raspberry Pi Links
+
+* [pierreinside](https://github.com/mobi3006/pierreinside/blob/master/raspberrypi.md)
+
+### Backup
+
+SD-Karten sind nicht besonders zuverlässig, die meisten sind so günstig, daß es da schon mal zu Ausfällen kommen kann. Keine Angst, Du mußt nicht befürchten, daß jede Woche die Karte kaputt ist. Aber wenn Du viele Stunden in die Konfiguration Deines Systems investiert hast, dann wäre ein Totalverlust sehr ärgerlich.
+
+> Grundsätzlich würde ich wichtigen Code immer bei GitHub oder BitBucket in der Cloud ablegen. Dort bekommt man kostenlos auch private Repositories gehostet.
+
+Unter "RPi Menü - Zubehör - SD Card Copier" findest Du ein komfortables Programm, um
+
+* Deine SD-Karte (von der RPi startet) auf eine andere Mini-SD-Karte zu clonen. Hierzu benötigst Du allerdings einen [USB-SD-Adapter wie diesen](https://www.amazon.de/UGREEN-Kartenleser-MacBook-Samsung-Aluminum/dp/B07D1J88CF/ref=sr_1_4?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=2EEG5VBOO3VOB&keywords=usb-sd+adapter&qid=1559978982&s=gateway&sprefix=usb-sd%2Caps%2C140&sr=8-4)
+  * auch praktisch, um Deinen aktuellen Stand mit Freunden zu teilen
+* Deine SD-Karte auf USB zu sichern
+
+Bei diesem SD-Kopiervorgang werden alle Partitionen (es sind mehrere) Deines Systems kopiert, um auch wirklich einen Clon zu produzieren.
+
+Unter Windows wirst Du den Inhalte dieses Backups nicht out-of-the-box lesen können, da Linux Dateisysteme verwendet, mit denen Microsoft Windows nicht umgehen kann. Abhilfe schafft hier [Linux Reader von Sysinternals](https://www.diskinternals.com/linux-reader/)
+
 ### Erste Hilfe beim Raspberry
 
 **Frage 1:**
@@ -1001,13 +1137,17 @@ Hilfe, mein Raspberry startet nicht mehr richtig. Was kann ich tun?
 
 **Antwort 1:**
 
+> Ich hoffe Du hast regelmäßig ein Backup gemacht (siehe Appendix).
+
 Beim Starten sollte man auf jeden Fall mal auf rote Zeichen auf der Textoberfläche achten, die durchrauscht. Vielleicht werden einige Dienste nicht gestartet und/oder einige Dateien sind kaputt.
 
 Beim Booten kann man die Shift-Taste drücken, um in den Noobs Recovery-Modus zu kommen. Sollte das nicht helfen kann man auch Strg-Alt-F1 oder (-F2 bis -F6) lange zusammen drücken, um auf die Textkonsole zu gelangen. Dann kann man zumindest ein bisschen weiter analysieren.
 
 > Das sind die Standard-Linux-Terminals, die es neben der grafischen Oberfläche auf jedem Linux-System gibt.
 
-Sollte das nicht klappen, dann kann man - sofern man Raspbian über den Noobs-Installer installiert hat - beim Start mit der Shift-Taste (wird auch angezeigt) zum Noobs Menü gelangen. Dort kann man über den *Konfigurationseditor* die `config.txt` und `cmdline.txt` bearbeiten. Nützliche Einstellungen sind hier:
+Sollte Dein Problem dann immer noch existieren, empfehle ich den Inhalt Deiner SD-Karte unter Windows mal zu sichern (kopieren der Dateien) ... für den Fall, daß Du bei Deiner Reparatur etwas zerstörst. Hierzu mußt Du unter Windows das Tool [Linux Reader von Sysinternals](https://www.diskinternals.com/linux-reader/) installieren, dann kann Windows den Inhalt lesen.
+
+Da wir Raspbian über den Noobs-Installer installiert haben können wir beim Start mit der Shift-Taste (wird auch angezeigt) zum Noobs Menü gelangen. Dort kann man über den *Konfigurationseditor* die `config.txt` und `cmdline.txt` bearbeiten. Nützliche Einstellungen sind hier:
 
 * `config.txt`:
   * [vollständig Beschreibung](http://rpf.io/config.txt)
