@@ -389,7 +389,7 @@ Starte Visual Studio Code per `code-oss` von der Console oder über das Menü (M
 
     ```json
     {
-        "markdown-pdf.executablePath": "/usr/bin/chromium-browser", 
+        "markdown-pdf.executablePath": "/usr/bin/chromium-browser",
         "markdown-pdf.convertOnSave": true
     }
     ```
@@ -664,7 +664,7 @@ Könnte das Spiel immer schneller werden? Wie könntest Du es noch abwechslungsr
 
 ---
 
-## Bestandsaufnahme
+## Ausblick
 
 Mit der Spielidee im Kopf werden wir nun zunächst einige kleinere Prototypen bauen, um die Realisierbarkeit zu prüfen. Wir starten am besten mal mit einer ganz einfachen Variante und können die dann je nach Lust und Laune noch verändern (vielleicht verschiebst Du ein paar Ideen auf die Sommerferien).
 
@@ -781,9 +781,9 @@ Füge nun einen Mini-Taster zu deiner Schaltung hinzu und schreibe ein Programm,
 
 Was hat das ganze mit dem Lucky Luke Spiel zu tun?
 
-## Aufgabe: Lucky Luke Prototyp mit einem Taster
+## Aufgabe: Lucky Luke Prototyp mit EINEM LED-Taster-Paar
 
-Bringe nun die beiden Schaltungen, die Du schon aufgebaut hast zu einem ersten Lucky Luke Prototyp zusammen.
+Bringe nun die beiden Schaltungen, die Du schon aufgebaut hast zu einem ersten Lucky Luke Prototyp mit einem einzigen LED-Taster-Paar zusammen.
 
 Hierzu bringst Du die LED für 3 Sekunden zum leuchten und wenn der Mini-Taster innerhalb dieser Zeit gedrückt wird, dann zählst Du einen Punkt.
 
@@ -791,6 +791,24 @@ Was solltest Du an Deinem Programm noch verändern, damit es noch intuitiver bed
 
 * ANTWORT-TODO: sobald der Taster gedrückt wurde sollte die LED auch ausgehen.
 * ANTWORT-TODO: ein akustisches Signal bei einem Punkt wäre eine motivierende Rückmeldung
+
+---
+
+## Aufgabe: Lucky Luke Prototyp mit VIER LED-Taster-Paaren
+
+Erweitere nun die Schaltung auf vier LED-Taster-Paare ... verwende jeweils unterschiedliche LED Farben.
+
+Programmiere das Spiel nun so, daß die Taster in zufälliger Reihenfolge gedrückt werden müssen. Du kannst hier gerne auch eigene Spielvarianten entwickeln. Ich bin gespannt :-)
+
+---
+
+## Bestandsaufnahme
+
+Wir haben den Prototypen nun fertiggestellt, d. h. die Hardware steht und ist mit der Software integriert. Der Proof-of-Concept ist damit abgeschlossen.
+
+Nun geht es nur noch darum, das Paket professioneller und zuverlässiger zu gestalten, so daß der Anwender im besten Fall nicht mal erkennt, daß Pico aus einem Computer besteht und darin Schaltungen verbaut sind.
+
+> Die Zuverlässigkeit ist mit dieser losen Verkabelung evtl. schwierig zu garantieren. Mal sehen, ob uns hier noch eine Lösung einfällt.
 
 ---
 
@@ -804,7 +822,9 @@ Mit den kleinen Tastern aus dem RPi Starter Kit kann man zwar den Prototyp bauen
 
 Wir brauchen unbedingt beleuchtete Buttons. Darin sind eigentlich nur solch kleine LEDs verbaut wie wir sie in unserem Prototypen verwendet haben. Bei manchen Buttons sind die LEDs zugänglich und können ausgetauscht werden (z. B. gegen andere Farben) - bei anderen ist das nicht möglich, d. h. LED kaput => Button wegwerfen.
 
-Ich war auf der Suche nach LEDs, die sich über 3,3 V betreiben lassen ... das liefern nämlich die GPIOs des RPi. Leider habe ich keine gefunden, aber zumindest [diese](https://www.amazon.de/gp/product/B075DFNK24/ref=ppx_yo_dt_b_asin_title_o09_s00?ie=UTF8&psc=1). 5V kann der RPi auch liefern (das ist die Spannung, mit der der RPi über [USB](https://de.wikipedia.org/wiki/Universal_Serial_Bus) versorgt wird) und die werden auch auf das Breadboard rausgeführt.
+Ich war auf der Suche nach LEDs, die sich über 3,3 V betreiben lassen ... das liefern nämlich die GPIOs des RPi. Leider habe ich keine gefunden, aber zumindest [diese](https://www.amazon.de/gp/product/B075DFNK24/ref=ppx_yo_dt_b_asin_title_o09_s00?ie=UTF8&psc=1), die mit 5V betrieben werden. 5V kann der RPi auch liefern (das ist die Spannung, mit der der RPi über [USB](https://de.wikipedia.org/wiki/Universal_Serial_Bus) versorgt wird) und die werden auch auf das Breadboard rausgeführt.
+
+> Baut man seine Schaltung, daß über die GPIOs die 0V gesteuert werden, dann kann man meine Arcade-LEDs auch in voller Helligkeit betreiben.
 
 ---
 
@@ -844,13 +864,11 @@ GPIO mit Output 0V beschalten, wenn man den Strom fließen lassen will ... GPIO 
 
 ---
 
-## Aufgabe: Arcade Button LED programmatisch steuern
+## Aufgabe: Arcade Button Tastendruck programmatisch auslesen
 
 Nun werden wir den letzten Schritt unseres [Proof-of-Concept](https://de.wikipedia.org/wiki/Proof_of_Concept) gehen und den Arcade Button vollständig in Betrieb nehmen.
 
 Wir müssen nun den Tastendruck programmatisch auslesen und in unseren Algorithmus/Programm verbauen. Den Code habe wir ja schon geschrieben - bleibt nur noch, die Schaltung entsprechend zu erweitern.
-
-**Lösung:**
 
 ---
 
@@ -880,6 +898,9 @@ Ich finde diese Variante sehr schön, um die HDMI- und USB-Anschlüsse aus dem G
 
 Damit wird man den Kabelsalat los und kann die Konsole schön transportieren. Ist vielleicht etwas für das Endprodukt.
 
+### Pierre's Lösung
+
+![Pico Gehäuse](docs/images/pico-gehäuse.jpeg)
 ---
 
 ## Aufgabe: Grafische Oberfläche programmieren
