@@ -211,7 +211,7 @@ Suche im Internet ein Bild von Lucky Luke, das ihn in einer typischen Art zeigt 
 
 > "W3Techs geht noch einen Schritt weiter und behauptet, dass Linux rund 70 Prozent der Top-10-Millionen-Alexa-Domains erreicht. Windows kontrolliert die restlichen 30 Prozent." ([it-platz.net](http://www.itplatz.net/der-wahre-marktanteil-von-linux-ist-groesser-als-sie-denken/])
 
-Du bist sicher auch schon mal mit Linux-basierten System in Berührung gekommen, ohne es vielleicht zu wissen. Android (Betriebssystem für Smartphones/Tablets), Chromebooks sind nur die offensichtlichen Vertreter. [Viele Haushaltsgeräte und andere Embedded-Systeme basieren auf Linx](https://www.zdnet.de/41555951/20-jahre-linux-so-hat-das-os-die-welt-veraendert/) - Eure Fritzbox zuhause genauso wie der Fernseher vielleicht und das Navigationssystem im Auto.
+Du bist sicher auch schon mal mit Linux-basierten System in Berührung gekommen, ohne es vielleicht zu wissen. Android (Betriebssystem für Smartphones/Tablets), Chromebooks sind nur die offensichtlichen Vertreter. [Viele Haushaltsgeräte und andere Embedded-Systeme basieren auf Linux](https://www.zdnet.de/41555951/20-jahre-linux-so-hat-das-os-die-welt-veraendert/) - Eure Fritzbox zuhause genauso wie der Fernseher vielleicht und das Navigationssystem im Auto.
 
 Eine Linux Distribution besteht also aus dem Kernel und vielen weiteren Softwarepaketen (z. B. die grafische Oberfläche). Die meisten Linux-Distributionen sind kostenlos - du bekommst also ein komplettes Betriebssystem und viele tolle Anwendungen geschenkt. Und das tolle ist, daß alles kostenlos weiterentwickelt wird. Das ist nur möglich, weil sich der [Open-Source-Gedanke](https://de.wikipedia.org/wiki/Open_Source) mit Aufkommen von Linux (in den 1990er Jahren) immer weiter verbreitet hat und immer mehr Teilnehmer fand.
 
@@ -357,7 +357,7 @@ Nun hast Du die wichtigsten GIT-Befehle schon kennengelernt - mehr ist für den 
 
 Visual Studio Code (aka VSC) ist ein Tool der Firma Microsoft, die auch das Betriebssystem Microsoft Windows bereitstellen. Dieses Tool ist so beliebt bei Entwicklern, daß es auch seinen Weg in die Linux-Welt gefunden hat (also in ein Konkurrenz-Betriebssystem).
 
-Allerdings ist der Raspberry Pi (mit seinem Prozessor basierend aif der [ARM-Architektur](https://de.wikipedia.org/wiki/ARM-Architektur)) nicht die Zielarchitektur von Microsoft. Deshalb hat [Jay (aka `headmelted`)](https://twitter.com/headmelted) seine Freizeit genutzt, um Visual Studio Code auf die ARM-Architektur zu portieren: https://code.headmelted.com/
+Allerdings ist der Raspberry Pi (mit seinem Prozessor basierend auf der [ARM-Architektur](https://de.wikipedia.org/wiki/ARM-Architektur)) nicht die Zielarchitektur von Microsoft. Deshalb hat [Jay (aka `headmelted`)](https://twitter.com/headmelted) seine Freizeit genutzt, um Visual Studio Code auf die ARM-Architektur zu portieren: https://code.headmelted.com/
 
 Führe folgende Befehle aus:
 
@@ -435,7 +435,7 @@ Unter "Menü RPi - Spiele - Python Games" findest Du ein paar einfache Spiele. S
 
 > Bei einer compilierten Sprache wie Java muß der Source-Code zunächst mit einem Compiler in ein anderes Format gebracht werden. Das ist natürlich umständlicher. Java ist auch eine sehr gute Sprache für das Erlernen objektorientierter Programmierung - auch sie wird auf dem Raspberry Pi unterstützt (sogar schon vorinstalliert) und Visual Studio Code unterstützt es auch.
 
-Diese Sprache gibt es in zwei derzeit weiterentwickelten Versionen - Version 2 und Version 3 ([Was ist der Unterschied?](https://learntocodewith.me/programming/python/python-2-vs-python-3/#2018-differences-of-python2-vs-3)). Wir werden hier Python 3 verwenden, da das die Zukunft ist ... Python 2 wird eigentlich nur noch aus Kompatibilitätsgründen weitergeflegt:
+Diese Sprache gibt es in zwei derzeit weiterentwickelten Versionen - Version 2 und Version 3 ([Was ist der Unterschied?](https://learntocodewith.me/programming/python/python-2-vs-python-3/#2018-differences-of-python2-vs-3)). Wir werden hier Python 3 verwenden, da das die Zukunft ist ... Python 2 wird eigentlich nur noch aus Kompatibilitätsgründen geflegt:
 
 > "Keep in mind that Python 2.7 will no longer be supported after 2020, so dedicating effort to learning it at this point won't make sense for most folks." ([Python 2 vs. Python 3](https://learntocodewith.me/programming/python/python-2-vs-python-3/))
 
@@ -493,7 +493,7 @@ Dein Raspbian hat beider Python Versionen an Bord (version 2 und 3):
 * Python 2: `/usr/bin/python2`
 * Python 3: `/usr/bin/python3`
 
-Per Default (wenn Du `python` ohne explizite Version aufrufst - kannst das aber auch per `python2` bzw. `python3` explizit wählen) verwendet Dein System wharscheinlich noch Python 2. Prüfe das mal in einem LXTerminal mit dem Befehl `python --version`. Wenn das der Fall ist, dann müssen wir das mit folgenden Befehlen umstellen:
+Per Default (wenn Du `python` ohne explizite Version aufrufst - kannst das aber auch per `python2` bzw. `python3` explizit wählen) verwendet Dein System wahrscheinlich noch Python 2. Prüfe das mal in einem LXTerminal mit dem Befehl `python --version`. Wenn das der Fall ist, dann müssen wir das mit folgenden Befehlen umstellen:
 
 ```bash
 sudo update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
@@ -603,6 +603,11 @@ Minecraft bietet Dir die Möglichkeit, per Python in das Spiel einzugreifen, um 
 Probier es mal zuhause aus:
 
 * Starte Minecraft Pi
+* wähle _Start Game_
+* wähle _Create new World_
+
+> Es muß zunächst eine Minecraft-Welt laufen - erst dann kannst Du Dich verbinden.
+
 * drücke die Tabulator-Taste (damit Deine Maus nicht mehr in Minecraft gefangen ist)
 * starte Visual Studio Code, lege folgendes Python Programm an und führe es aus:
 
@@ -672,7 +677,7 @@ Wenn wir uns sicher sind, daß Hardware und Software die Spielidee gut umsetzen,
 
 Wir sollten dabei die Zeit im Kopf behalten, denn am Ende des Praktikums wollen wir einen echten Wettkampf stattfinden lassen ... die Spielekonsole sollte also irgendwie funktionieren.
 
-In der Produktentwicklung ist das Konzept des [Minimum Viable Prouct](https://de.wikipedia.org/wiki/Minimum_Viable_Product) sehr beliebt. Hierbei wird das Produkt schrittweise weiterentwickelt und nach jeder Entwicklungsstufe potentiellen Nutzern zur Verfügung gestellt. Die können das Produkt dann bewerten und Du kannst Dein Produkt dann entsprechend weiterentwickeln. Diese Vorgehensweise wird uns helfen, den Pico-Launch nicht aus den Augen zu verlieren und das Risiko zu reduzieren, daß wir gar nichts präsentieren können. Mit jeder Entwicklungsstufe wird dein Produkt besser ... aber jede Entwicklungsstufe ist auch ein Produkt, das Du präsentieren kannst.
+In der Produktentwicklung ist das Konzept des [Minimum Viable Product](https://de.wikipedia.org/wiki/Minimum_Viable_Product) sehr beliebt. Hierbei wird das Produkt schrittweise weiterentwickelt und nach jeder Entwicklungsstufe potentiellen Nutzern zur Verfügung gestellt. Die können das Produkt dann bewerten und Du kannst Dein Produkt dann entsprechend weiterentwickeln. Diese Vorgehensweise wird uns helfen, den Pico-Launch nicht aus den Augen zu verlieren und das Risiko zu reduzieren, daß wir gar nichts präsentieren können. Mit jeder Entwicklungsstufe wird dein Produkt besser ... aber jede Entwicklungsstufe ist auch ein Produkt, das Du präsentieren kannst.
 
 Wir werden uns jetzt zunächst mal mit ein wenig Hardware und deren softwaretechnischer Integration mit dem Raspberry Pi beschäftigen. Später werden wir - sofern noch Zeit ist - eine Spieloberfläche programmieren, damit das Ganze nicht nur über die dunkle schwarze Konsole angezeigt wird (aber spielbar wäre es dann dennoch).
 
