@@ -227,6 +227,37 @@ Die Distributionen bieten einen sog. [Paketmanager](https://de.wikipedia.org/wik
 
 Ein Paketmanager hat den Vorteil, daß Du mit einem Einzeiler (`sudo apt-get update && sudo apt-get dist-upgrade`) Dein ganzes System aktualisieren kannst ([mehr Details](https://www.elektronik-kompendium.de/sites/raspberry-pi/2002041.htm)). Also nicht nur Dein Betriebssystem, sondern auch die gesamten Anwendungen, die Du nachträglich installiert hast. Das ist unter Windows so nicht möglich und muß in Unternehmen mit viel Aufwand nachgebaut werden. Du hast es sogar schon auf Deinem RPi für 35 Euro.
 
+### Konsole
+
+In einer Linux-Distribution steht eine mächtige Konsole zur Verfügung. Diese wird von Power-Usern genutzt, um über Kommandos Aktionen (z. B. Programme starten, Dateien kopieren, Dateien anzuschauen) auszulösen. Vorteil dieses Ansatzes ist, daß sich die Aktionen in sog. [Shellskripten](https://www.selflinux.org/selflinux/html/shellprogrammierung03.html) automatiseren lassen und mit einem (parametrisierbaren) Kommando komplexe Aktionen ausgeführt werden.
+
+Folgendes Skript fragt die Wetterdaten von Madrid ab und legt sich in einem Verzeichnis mit dem Datum ab:
+
+```bash
+#!/bin/bash
+_date=$(date +%Y%m%d)
+_folder=/tmp/${_date}
+mkdir ${_folder}
+_file=${_folder}/$(date +%H%M)
+curl wttr.in/Madrid > ${_file}  
+```
+
+Kopier mal den Inhalt in eine Datei `/tmp/wetter.sh` und führe das Kommando `bash /tmp/wetter.sh` aus. Anschließend wirst Du imm Verzeichnis `/tmp` einen neuen Ordner mit dem Datumsstempel von heute sehen und einer Datei darin, die Wetterprognose enthält.
+
+Als Softwareentwickler kann man auf diese Weise stupide Aufgaben automatisieren, Fehler vermeiden und anderen diese Tools zu deren Effizienzsteigerung weitergeben.
+
+### Konsolen-Kommandos
+
+Hier nur die wichtigsten Kommandos ... ich möchte auch gar nicht weiter darauf eingehen - es lohnt sich aber, die Konsole gut zu beherrschen (für Lucky Luke brauchen wir es nicht):
+
+* ls
+* cd /tmp
+* cd ..
+* cd
+* mkdir ~/test
+* rmdir ~/test
+  * **VORSICHT:** hiermit wird das Verzeichnis gelöscht
+
 ---
 
 ## Aufgabe: Installiere _Kodi Media Center_ über die grafische Oberfläche
@@ -721,9 +752,7 @@ Wenn Eure Schaltung nicht funktioniert, dann könnt Ihr folgende Tricks anwenden
 
 ## Aufgabe: Breadboard mit dem RPi verbinden
 
-Der RPi verfügt über GPIO-Anschlüsse ... lies hier am besten was dazu. Im wesentlichen handelt es sich dabei um  ... TODO
-
-Um die Schaltungen zuverlässig aufzubauen verwenden wir das sog. [Breadboard](https://de.wikipedia.org/wiki/Steckplatine), das über ein [GPIO Extension Board]() mit dem RPi verbunden wird.
+Der RPi verfügt über GPIO-Anschlüsse. Um größere Schaltungen zuverlässig aufzubauen, verwenden wir das sog. [Breadboard](https://de.wikipedia.org/wiki/Steckplatine), das über ein [GPIO Extension Board](https://www.youtube.com/watch?v=RCIL35e47mk) mit dem RPi verbunden wird.
 
 Am besten fährst Du Deinen RPi dazu mal runter (am besten programmatisch über das Menü - einfach den Strom kappen geht auch, aber vielleicht nicht die beste Variante), , trennst das Netzteil vom RPi, verbindest das Breadboard so wie [in diesem YouTube Board](https://www.youtube.com/watch?v=E61VYI3VSRo) dargestellt.
 
@@ -865,7 +894,7 @@ Teil B (optional): Wir wollen die Buttons in voller Stärke zum Strahlen bringen
 
 **Lösung:**
 
-GPIO mit Output 0V beschalten, wenn man den Strom fließen lassen will ... GPIO liefert nicht die 5V, sondern das niedrige Spannungspotential.
+Hierzu verwendet man einen Transistor, der über einen GPIO-Ausgang mit einem Emitter-Strom versorgt wird.
 
 ---
 
