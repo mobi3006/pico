@@ -4,7 +4,9 @@ In diesem Projekt werden wir die Spielekonsole _PiCo_ bauen. Das Herzstück der 
 
 Das Besondere ist, daß wir für das Projekt nichts weiter als den RPi verwenden (Du benutzt keinen anderen Computer) - er beliefert uns mit Informationen aus dem Internet, stellt die Python-Entwicklungsumgebung bereit und ist die Spielekonsole. Insgesamt kostet die Spielekonsole nur 75 Euro - was selbst für Schüler ein erwschwinglicher Preis ist.
 
-> Es müssen nicht unbedingt alle Teile dieses Dokuments behandelt werden. Teile wie GIT, PHP, ... können anfangs durchaus weggelassen werden und später bei Bedarf behandelt bzw. nachgelesen werden.
+> Es müssen nicht unbedingt alle Teile dieses Dokuments behandelt werden. Teile wie GIT, PHP, ... können anfangs weggelassen werden und später bei Bedarf behandelt bzw. nachgelesen werden.
+
+Wenn Du Dich schon mal inspirieren möchtest, dann schau doch google mal nach _Twall_ ... das ist eine Spielidee, die man nach diesem Praktikum für 100 Euro nachbauen könnte. Eine Twall-Lösung kostet mehrere Tausend Euro.
 
 ---
 
@@ -20,7 +22,7 @@ Wir stellen dieses Projekt unter Open Source, d. h. jeder auf der Welt wird Dein
 
 Wir haben uns dafür entschieden, Dich in die Welt von Linux und Python einzuführen. Gepaart mit Cloud-hosted Open-Source-Workflows (mit GitHub) hast Du alle Grundlagen, um als Softwareentwickler in den nächsten Jahren durchzustarten. Wir machen das Ganze auf einem Raspberry Pi, weil Du den auch einfach mit nachhause nehmen und an Deinen eigenen Ideen weiterarbeiten kannst. Außerdem ist es ein Einstieg in die aufkommende Welt der [Internet of Things](https://www.heise.de/tipps-tricks/Internet-of-Things-Was-ist-das-4292504.html), in der noch kleinere Computer wie der RPi genutzt werden. Deine Freunde können jederzeit mitmachen ... ein Invest von 75 Euro und ihr könnt zusammen hacken, vielleicht sogar mal verteilt über die ganze Welt.
 
-Am Ende des Praktikums (Freitag 13:00 Uhr) wirst Du die Spielekonsole launchen, d. h. dem Team präsentieren und ein paar technische Details verraten. Den Höhepunkt bildet die _Lucky Luke Challenge_, ein Wettkampf um den reaktionsschnellsten Kollegen zu ermitteln. Natürlich wird das dann auch ordentlich gefeiert.
+Am Ende des Praktikums wirst Du die Spielekonsole launchen, d. h. dem Team präsentieren und ein paar technische Details verraten. Den Höhepunkt bildet die _Lucky Luke Challenge_, ein Wettkampf um den reaktionsschnellsten Kollegen zu ermitteln. Natürlich wird das dann auch ordentlich gefeiert.
 
 > Die Tage sind so aufgebaut, daß an jedem Tag mindestens ein [Minimum Viable Products (aka MVP)](https://de.wikipedia.org/wiki/Minimum_Viable_Product) entsteht, d. h. jedes MVP wäre am Freitag präsentierbar. Je weiter wir kommen desto kompletter ist der Launch des PiCo.
 
@@ -34,7 +36,7 @@ Am Ende des Praktikums (Freitag 13:00 Uhr) wirst Du die Spielekonsole launchen, 
 
 Für dieses Projekt brauchen wir folgende Komponenten:
 
-* [Raspberry Pi 3 Modell B+](https://www.amazon.de/Raspberry-1373331-Pi-Modell-Mainboard/dp/B07BDR5PDW/ref=sr_1_3?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=SKVUEGOT7329&keywords=raspberry+pi+3+b%2B&qid=1558447193&s=gateway&sprefix=raspb%2Caps%2C147&sr=8-3)
+* [Raspberry Pi 3 Modell B+](https://www.amazon.de/Raspberry-1373331-Modell-Mainboard-1GB/dp/B07BFH96M3/ref=sr_1_7?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=D0FA47ZV75V3&keywords=raspberry+pi+3+b%2B&qid=1562332833&s=gateway&sprefix=raspberry%2Caps%2C143&sr=8-7)
   * der 3 B+ hat WLAN schon an Bord - man braucht also keinen externen USB Stick
   * 35 Euro
 * Mini SD Karte - 16 GB
@@ -42,7 +44,8 @@ Für dieses Projekt brauchen wir folgende Komponenten:
   * das bekommst Du sicherlich geschenkt ... viele Leute haben zuhause alte Hardware, die sie nicht mehr brauchen
 * [Raspberry Gehäuse inkl. Kühlkörper, Lüfter und Netzteil mit Schalter (sehr praktisch)](https://www.amazon.de/dp/B07BK3W3XR/ref=sspa_dk_detail_4?psc=1&pd_rd_i=B07BK3W3XR&pd_rd_w=6tt1G&pf_rd_p=00903874-3af0-47e0-8622-ee58087f71cf&pd_rd_wg=YByf2&pf_rd_r=H4TMH6KT3Y1D6CMACXKH&pd_rd_r=200a60f5-875d-11e9-acf8-b37e4eea4373)
   * 16 Euro
-  * ich hatte mal ein Problem in meiner Software (hohe CPU-Last) und da sprang die Temperatur-Warnung im Raspbian an. Vielleicht passiert das im Hochsommer noch häufiger oder wenn der RPi in kleine schlecht durchlüftete Gehäuse verbaut wird
+  * ich hatte mal ein Problem in meiner Software (hohe CPU-Last) und da sprang die Temperatur-Warnung im Raspbian an. Vielleicht passiert das im Hochsommer noch häufiger oder wenn der RPi in kleine schlecht durchlüftete Gehäuse verbaut wird.
+  * der Raspberry schaltet den Takt runter (= Performance wird schlechter), wenn er zu heiß wird - man sollte auf jeden Fall in einen Lüfter investieren
 * [Basic Starter Kit inkl. GPIO Extension Board](https://www.amazon.de/Freenove-Raspberry-Beginner-Processing-Tutorials/dp/B06WD5FTVD/ref=sxbs_sxwds-stvp?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1J8XSDI6ASS4C&keywords=raspberry+starter+kit&pd_rd_i=B06WD5FTVD&pd_rd_r=9f5d7937-9b6f-4648-8377-cb066c29ac93&pd_rd_w=ECmgx&pd_rd_wg=Bjfdc&pf_rd_p=6d84c7ba-ae72-4e53-b9a4-5df18ccb370e&pf_rd_r=ER7FAQRN3734ETBRCXKS&qid=1558448017&s=gateway&sprefix=raspberry+starter%2Caps%2C140)
   * 13 Euro
 * [Tastatur und Maus - USB - zur Not gebraucht](https://www.amazon.de/Desktop-Set-492015-Optische-Scrollrad-deutschem/dp/B00BLJDZ5Q/ref=sr_1_2?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=maus+tastatur&qid=1558448148&s=gateway&sr=8-2)
@@ -64,7 +67,7 @@ Fragt man also mal rum, so bekommt man vieles sicher von Leuten geschenkt, die f
 
 ## Reminder
 
-Du kannst bei diesem Projekt eigentlich nichts kaputtmachen (abgesehen vielleicht bei den elektronischen Schaltungen, wenn Du Kurzschlüsse verursachst ... maximaler Verlust: 35 Euro). Du wirst Deine Software immer regelmäßig auf einen Server im Internet sichern (schon allein um Dich mit Deinem Betreuer zu synchronisieren), so daß Du jederzeit ohne großen Aufwand von vorn anfangen kannst. Du kannst auch jederzeit beim Raspberry Pi einfach den Stromstecker ziehen und das System startet ohne Datenverlust beim nächsten mal wieder ... Linux ist hier sehr zuverlässig.
+Du kannst bei diesem Projekt eigentlich nichts kaputtmachen (abgesehen vielleicht bei den elektronischen Schaltungen, wenn Du Kurzschlüsse verursachst ... maximaler Verlust: 35 Euro - und tatsächlich passiert das schon mal). Du wirst Deine Software immer regelmäßig auf einen Server im Internet sichern (schon allein um Dich mit Deinem Betreuer zu synchronisieren), so daß Du jederzeit ohne großen Aufwand von vorn anfangen kannst. Du kannst auch jederzeit beim Raspberry Pi einfach den Stromstecker ziehen und das System startet ohne Datenverlust beim nächsten mal wieder ... Linux ist hier sehr zuverlässig.
 
 ... hab also keine Angst und spiel rum.
 
@@ -237,8 +240,8 @@ Folgendes Skript fragt die Wetterdaten von Madrid ab und legt sich in einem Verz
 #!/bin/bash
 _date=$(date +%Y%m%d)
 _folder=/tmp/${_date}
-mkdir ${_folder}
-_file=${_folder}/$(date +%H%M)
+mkdir -p ${_folder}
+_file=${_folder}/$(date +%H%M).txt
 curl wttr.in/Madrid > ${_file}  
 ```
 
@@ -1181,6 +1184,27 @@ sudo ln -s /home/pi/php /var/www/html/php
 Jetzt hast Du Deine erste PHP-Seite in `~/php/hello.php` und kannst sie per http://localhost/php/hello.php im Browser anzeigen lassen.
 
 Viel Spaß bei Deinen weiteren PHP-Aktivitäten.
+
+---
+
+## Erfahrungen nach dem ersten durchgeführten Praktikum
+
+Das beste ist: der Praktikant hat das Programmieren für sich entdeckt ... und weiß nun, daß ihn die Softwareentwicklung begeistert
+
+Ansonsten
+
+* viel Spaß ... es wurden auch eigene Ideen entwickelt/vorangetrieben
+  * Praktikant hat abends noch an eigenen Softwareideen gebastelt
+* Lucky Luke hat super funktioniert - die Challenge konnte stattfinden
+* der Aufbau in MUST-HAVE und optionaler Aspekte paßte gut - wir konnten auf viele optionale Aspekte eingehen (insbes. am Ende des Praktikums waren VNC und GitHub die Aspekte, die den weiteren Weg ebnen konnten)
+* die Dokumentation mit vielen weiterführenden Links und Ideen hat dem Praktikanten sehr gut gefallen
+
+Was könnte man verbessern
+
+* eine grafische UI hätte das Produkt noch professioneller erscheinen lassen und die Challenge noch spannender gemacht
+  * wenn jeder ständig gesehen hätte wieviele Punkte der Gegner schon hat und wieviel Zeit noch verbleibt
+  * wenn es eine Live-Tabelle gegeben hätte
+* Pico als richtige Spielekonsole, der man die Herkunft als Raspberry PI und Raspbian nicht mehr ansieht
 
 ---
 
