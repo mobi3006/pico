@@ -2,6 +2,10 @@
 
 In diesem Projekt werden wir die Spielekonsole _PiCo_ bauen. Das Herzstück der Hardware ist ein [Raspberry Pi](https://de.wikipedia.org/wiki/Raspberry_Pi) (aka RPi) - das Spiel _Lucky Luke_ werden wir in der Programmiersprache [Python](https://de.wikipedia.org/wiki/Python_(Programmiersprache)) selbst programmieren.
 
+Hier schon mal ein Vorgeschmack:
+
+![Lucky Luke - Hands on](https://youtu.be/VZWJatGNVm8)
+
 Das Besondere ist, daß wir für das Projekt nichts weiter als den RPi verwenden (Du benutzt keinen anderen Computer) - er beliefert uns mit Informationen aus dem Internet, stellt die Python-Entwicklungsumgebung bereit und ist die Spielekonsole. Insgesamt kostet die Spielekonsole nur 75 Euro - was selbst für Schüler ein erwschwinglicher Preis ist.
 
 > Es müssen nicht unbedingt alle Teile dieses Dokuments behandelt werden. Teile wie GIT, PHP, ... können anfangs weggelassen werden und später bei Bedarf behandelt bzw. nachgelesen werden.
