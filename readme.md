@@ -4,7 +4,7 @@ In diesem Projekt werden wir die Spielekonsole _PiCo_ bauen. Das Herzstück der 
 
 Hier schon mal ein Vorgeschmack:
 
-![Lucky Luke - Hands on](https://youtu.be/VZWJatGNVm8)
+[Lucky Luke - Hands on](https://youtu.be/VZWJatGNVm8)
 
 Das Besondere ist, daß wir für das Projekt nichts weiter als den RPi verwenden (Du benutzt keinen anderen Computer) - er beliefert uns mit Informationen aus dem Internet, stellt die Python-Entwicklungsumgebung bereit und ist die Spielekonsole. Insgesamt kostet die Spielekonsole nur 75 Euro - was selbst für Schüler ein erwschwinglicher Preis ist.
 
