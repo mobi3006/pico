@@ -2,9 +2,13 @@
 
 In diesem Projekt werden wir die Spielekonsole _PiCo_ bauen. Das Herzstück der Hardware ist ein [Raspberry Pi](https://de.wikipedia.org/wiki/Raspberry_Pi) (aka RPi) - das Spiel _Lucky Luke_ werden wir in der Programmiersprache [Python](https://de.wikipedia.org/wiki/Python_(Programmiersprache)) selbst programmieren.
 
-Hier schon mal ein Vorgeschmack:
+Hier schon mal ein Vorgeschmack vom Endprodukt:
 
-[Lucky Luke - Hands on](https://youtu.be/VZWJatGNVm8)
+* [Lucky Luke Spiel im praktischen Einsatz - Youtube Video](https://youtu.be/VZWJatGNVm8)
+
+![Pico Controller - von außen](docs/images/pico-gehäuse-beta1.jpg)
+
+![Pico Controller - von innen](docs/images/pico-gehäuse-beta2.jpg)
 
 Das Besondere ist, daß wir für das Projekt nichts weiter als den RPi verwenden (Du benutzt keinen anderen Computer) - er beliefert uns mit Informationen aus dem Internet, stellt die Python-Entwicklungsumgebung bereit und ist die Spielekonsole. Insgesamt kostet die Spielekonsole nur 75 Euro - was selbst für Schüler ein erwschwinglicher Preis ist.
 
@@ -939,9 +943,18 @@ Ich finde diese Variante sehr schön, um die HDMI- und USB-Anschlüsse aus dem G
 
 Damit wird man den Kabelsalat los und kann die Konsole schön transportieren. Ist vielleicht etwas für das Endprodukt.
 
-### Pierre's Lösung
+### Pierre's Alpha Lösung
 
-![Pico Gehäuse](docs/images/pico-gehäuse.jpeg)
+Hier aus einem Karton, der lackiert wurde:
+
+![Pico Gehäuse](docs/images/pico-gehäuse-alpha.jpeg)
+
+### Pierre's Beta Lösung
+
+Hier aus einem [Bildschirmständer](https://www.amazon.de/AmazonBasics-DHMSA-Bildschirmst%C3%A4nder-h%C3%B6henverstellbar/dp/B00X4SCCFG/ref=sr_1_1_sspa?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1M6GRU1MNKCPW&keywords=bildschirmst%C3%A4nder&qid=1570870907&smid=A3JWKAKR8XB7XF&sprefix=bildschirm%2Caps%2C151&sr=8-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEzNE0zTlFPWTAxTFpWJmVuY3J5cHRlZElkPUEwNDcwOTMyMTlLODRJMDNXU0szSSZlbmNyeXB0ZWRBZElkPUEwNDE0OTM1MkxDODZWTVE3VEJEOSZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=) für 12 Euro:
+
+![Pico Gehäuse](docs/images/pico-gehäuse-beta1.jpg)
+
 ---
 
 ## Aufgabe: Grafische Oberfläche programmieren
