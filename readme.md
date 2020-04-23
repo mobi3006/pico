@@ -108,15 +108,23 @@ Für unsere Zwecke genügt auch eine Vorgängerversion (nur Visual Studio Code b
 * Kühlkörper aufkleben
 * Maus und Tastatur anschließen
 
-### 2. Schritt - Betriebssystem installieren
+### 2. Schritt - Betriebssystem installieren - Option 1: Raspbian via Noobs
 
-Am einfachsten gelingt die Installation über [Noobs](https://de.wikipedia.org/wiki/Noobs) - das ist ein Betriebssystem-Installer, der auf die Mini-SD-Karte kopiert wird. Beim Start wird ein Menü angezeigt, über das man das gewünschte Betriebssystem auswählt.
+Am einfachsten gelingt die Installation über [Noobs](https://de.wikipedia.org/wiki/Noobs) - das ist ein Betriebssystem-Installer, der auf die Mini-SD-Karte kopiert wird. Beim Start wird ein Menü angezeigt, über das man das gewünschte Betriebssystem auswählt - es werden mehrere Betriebssysteme bzw. Appliances unterstützt.
+
+Im folgenden wird dieser Ansatz beschrieben.
 
 > Im Internet kann man schon Mini-SD-Karten kaufen, auf denen sich der Noobs Installer befindet. Ich halte davon nicht viel, da man nie wissen kann, ob sich da tatsächlich der Original-Noobs Installer befindet oder man sich damit schon einen [Trojaner](https://de.wikipedia.org/wiki/Trojanisches_Pferd_(Computerprogramm)) installiert. Klar ist aber, daß man für den Download und das Kopieren auf die SD-Karte somit einen weiteren Computer benötigt - aber auch wirklich nur hierfür.
 
-### Mini-SD-Karte formatieren
+### 2. Schritt - Betriebssystem installieren - Option 2: Raspbian-Raw
 
-> Dieser Abschnitt wird übersprungen ... die Mini-SD-Karte ist bereits mit dem Dateisystem FAT32 formatiert und der Noobs-Installer ist darauf entpackt.
+Noobs bietet den schnellsten Einstieg, doch den Komfort (auch andere Distributionen installieren zu können) erkauft man sich mit einem leicht verzögerten Start des Systems.
+
+> Nach der Installation von Noobs auf einem Raspberry Pi 4 hatte ich den Eindruck, daß das System während der Installation und zur Laufzeit recht zäh war und entschied mich dann für die Raspbian-Raw Variante.
+
+Wer das nicht möchte, kann Raspbian ohne Noobs installieren. [Hier](https://www.raspberrypi.org/documentation/installation/installing-images/README.md) findest Du die Installationsanleitung. Das Raspbian kommt als `img`-Datei, die per [Belena Etcher](https://www.balena.io/etcher) auf die SD-Karte *gebrannt* wird.
+
+### Mini-SD-Karte formatieren
 
 Die Mini-SD-Karte muß im FAT32 Dateisystem formatiert werden.
 
@@ -178,7 +186,7 @@ Zudem wird noch das WLAN konfiguriert (das haben wir allerdings schon im Noobs I
 
 > Änderungen an der Konfiguration kann man auch im nachhinein noch über "RPi Menü - Einstellungen - Raspberry-Pi-Konfiguration" oder `sudo raspi-config` über das LXTerminal vornehmen. Über letzteres kann man beispielsweise die [Bildschirm-Auflösung konfigurieren](https://www.elektronik-kompendium.de/sites/raspberry-pi/2101201.htm) oder der Start des System auf die Textkonsole oder die grafische Oberfläche erfolgen soll (mit Autp-Login des Users `pi` oder nicht).
 
-Bei der Nutzung solltest Du darauf achten, daß im rechten oberen Bereich **KEIN BLITZ** zu sehen ist. Wenn doch, dann ist das ein Indiz, daß die Stronversorgung nicht stabil ist. Das könnte zu Abstürzen oder Performanceenbußen führen. Du solltest ein ordentliches Netzteil verwenden und kein Handy-Ladegerät!!!
+Bei der Nutzung solltest Du darauf achten, daß im rechten oberen Bereich **KEIN BLITZ** zu sehen ist. Wenn doch, dann ist das ein Indiz, daß die Stronversorgung nicht stabil ist. Das könnte zu Abstürzen oder Performanceenbußen führen. Du solltest ein richtiges Netzteil verwenden und kein Handy-Ladegerät!!!
 
 ### System-Upgrade
 
