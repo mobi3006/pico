@@ -735,11 +735,14 @@ Wir werden uns jetzt zunächst mal mit ein wenig Hardware und deren softwaretech
 
 ## Exkurs: Elektrotechnik
 
-... TODO ... Verweis auf das Buch
+* [sehr gute Videos zu Elektrotechnik-Grundlagen](https://www.youtube.com/playlist?list=PLxbwjcEKMz_jqoHIzwqJd7WllsVbQODyc)
+* [Raspberry Pi für Kids](https://www.amazon.de/Raspberry-f%C3%BCr-Kids-Programmieren-experimentieren/dp/3747502725/ref=sr_1_1?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=HJ5UUAUNWXQS&keywords=raspberry+pi+f%C3%BCr+kids&qid=1642575948&sprefix=raspberry+pi+f%C3%BCr+kids%2Caps%2C70&sr=8-1)
+
+Es ist wichtig ein paar elementare Kenntnisse von Elektrotechnik zu haben ... auch wenn es bei 3,3 bzw. 5 V vom Raspberry Pi zu keinen großen Strömen (GPIO Port kann maximal 16mA liefern) in den Schaltungen kommt. Ohne das wird es schwierig, eigene Schaltungen zu entwickeln oder Fehler zu finden.
 
 ### Vorwiderstand
 
-Eine LED braucht einen Vorwiderstand, da die Spannung mit 3,3V einen zu hohen Ladestrom verursachen würde und die LED kurz- oder mittelfristig zerstören würde. Deshalb schaltet man eine Widerstand dazu, an dem Spannung abfällt und die Stromstärke reduziert wird. Das leitet sich aus dem Ohmschen Gesetz U = R * I ab. 
+Eine LED braucht einen Vorwiderstand, da die Spannung mit 3,3V einen zu hohen Ladestrom (= hohe Stromstärke) verursachen würde und die LED kurz- oder mittelfristig zerstören würde (hohe Temperaturen). Deshalb schaltet man eine Widerstand dazu, an dem Spannung abfällt und die Stromstärke reduziert wird. Das leitet sich aus dem Ohmschen Gesetz U = R * I ab.
 
 ### GPIO Stromversorgung
 
